@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahukari Praveen — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">wait for my portfolio to load :)</div>
+      <div class="loader-bar">
+        <div class="loader-progress" id="loaderProgress"></div>
+      </div>
+      <div class="loader-text">Initializing...</div>
+    </div>
+  </div>
+
+  <!-- PARTICLES -->
+  <div id="particles"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="#hero">My Space!<span class="dot"></span></a>
+      <ul class="nav-links-list">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#certifications" class="nav-link">Certs</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-btn" title="Toggle Neo-Brutalism">
+          <i class="fas fa-cube"></i>
+        </button>
+        <a href="my-resume.pdf" download class="btn btn-sm">Resume <i class="fas fa-download"></i></a>
+        <button id="navToggle" class="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#projects" class="mobile-link">Projects</a></li>
+      <li><a href="#skills" class="mobile-link">Skills</a></li>
+      <li><a href="#certifications" class="mobile-link">Certs</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span> Open to Opportunities
+      </div>
+      <h1 class="hero-title reveal">
+        Sahukari<br /><span class="gradient-text">Praveen</span>
+      </h1>
+      <p class="hero-subtitle reveal">
+        CS Student @ VIT Chennai · AI/ML · DevOps · Web3 · Full-Stack
+      </p>
+      <p class="hero-desc reveal">
+        Building intelligent, scalable systems - from LLM-powered APIs and decentralized platforms
+        to 3D reconstruction pipelines. I turn complex problems into elegant software.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#projects" class="btn btn-primary">View Projects <i class="fas fa-arrow-right"></i></a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <span class="stat-number" data-target="3">0</span>
+          <span class="stat-label">Major Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number" data-target="2">0</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number" data-target="10">0</span>
+          <span class="stat-label">Tech Stacks</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="code-card">
+        <div class="code-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="code-filename">praveen.py</span>
+        </div>
+        <pre class="code-body"><code><span class="kw">class</span> <span class="fn">Praveen</span>:
+  <span class="kw">def</span> <span class="fn">__init__</span>(self):
+    self.role   = <span class="str">"CS Student"</span>
+    self.uni    = <span class="str">"VIT Chennai"</span>
+    self.focus  = [
+      <span class="str">"AI / ML"</span>,
+      <span class="str">"DevOps"</span>,
+      <span class="str">"Web3"</span>,
+      <span class="str">"Full-Stack"</span>,
+    ]
+    self.status = <span class="str">"Open to work"</span>
+
+  <span class="kw">def</span> <span class="fn">contact</span>(self):
+    <span class="kw">return</span> <span class="str">"phixbugs@gmail.com"</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Who I Am</span>
+        <h2>About Me</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a final-year Computer Science student at <strong>VIT Chennai</strong>, graduating in August 2026.
+          My passion lies at the intersection of <strong>AI/ML</strong>, <strong>distributed systems</strong>,
+          and <strong>developer tooling</strong> — building things that are not just functional, but thoughtfully engineered.</p>
+          <p>I've worked on LLM fine-tuning with BERT, decentralized smart contract systems on EVM chains,
+          and automated deep learning pipelines for 3D reconstruction — all the way from research to containerized production deployment.</p>
+          <p>When I'm not coding, I explore blockchain protocols, contribute to open-source, and geek out on systems architecture.
+          I'm actively seeking <strong>full-time roles or internships</strong> starting mid-2026.</p>
+          <div class="about-links">
+            <a href="mailto:phixbugs@gmail.com" class="about-link"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://www.linkedin.com/in/soy-praveen/" target="_blank" class="about-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/soy-praveen" target="_blank" class="about-link"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+        <div class="about-cards reveal">
+          <div class="info-card">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+              <strong>B.Tech — Computer Science</strong>
+              <span>Vellore Institute of Technology · 2022–2026</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Location</strong>
+              <span>Chennai, Tamil Nadu, India</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-briefcase"></i>
+            <div>
+              <strong>Availability</strong>
+              <span>Open to work · Aug 2026 onward</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-code-branch"></i>
+            <div>
+              <strong>Interests</strong>
+              <span>LLMs · DevOps · Blockchain · Systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE / HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">My Journey</span>
+        <h2>Timeline</h2>
+      </div>
+      <div class="timeline-wrapper">
+        <div class="timeline-track">
+          <div class="timeline-progress-bar" id="timelineProgress"></div>
+        </div>
+        <div class="timeline-items">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">2022</span>
+              <h3>Joined VIT Chennai</h3>
+              <p>Started B.Tech in Computer Science. Dove deep into DSA, OOP, and systems programming.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">2023</span>
+              <h3>First Major Project</h3>
+              <p>Built a 3D scene reconstruction pipeline from single 360° panoramas using deep learning (PyTorch).</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">2024</span>
+              <h3>Web3 & AI Exploration</h3>
+              <p>Built a decentralized freelance marketplace with Soulbound NFTs, DAO governance, and on-chain escrow contracts.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">2025</span>
+              <h3>Certifications + LLM Engineering</h3>
+              <p>IBM DevOps Practitioner + Microsoft Azure DP-900. Built BERT-based resume parsing &amp; job recommendation system.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-card highlight">
+              <span class="timeline-date">2026</span>
+              <h3>Graduating &amp; Job Ready!</h3>
+              <p>Seeking full-time roles in AI/ML, Backend, or DevOps engineering. Available from August 2026.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">What I've Built</span>
+        <h2>Projects</h2>
+      </div>
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai">AI / ML</button>
+        <button class="filter-btn" data-filter="web3">Web3</button>
+        <button class="filter-btn" data-filter="devops">DevOps</button>
+        <button class="filter-btn" data-filter="3d">3D / Vision</button>
+      </div>
+      <div class="ext-grid">
+        <div class="ext-card reveal" data-category="ai devops">
+          <div class="ext-card-header">
+            <div class="ext-icon ai-icon"><i class="fas fa-brain"></i></div>
+            <div class="ext-badges"><span class="tag">AI/ML</span><span class="tag">DevOps</span></div>
+          </div>
+          <h3>Resume Parsing &amp; Job Recommendation</h3>
+          <p>BERT-based LLM fine-tuning for high-accuracy skill extraction. Benchmarked across multiple training configs. Dockerized dual-interface web app with automated ML evaluation pipelines and bulk candidate ranking.</p>
+          <div class="ext-stack">
+            <span>Python</span><span>BERT</span><span>PyTorch</span><span>Docker</span><span>REST API</span>
+          </div>
+          <div class="ext-footer">
+            <a href="#" class="btn-link"><i class="fab fa-github"></i> Code</a>
+            <a href="#" class="btn-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+          </div>
+        </div>
+        <div class="ext-card reveal" data-category="web3 devops">
+          <div class="ext-card-header">
+            <div class="ext-icon web3-icon"><i class="fas fa-cubes"></i></div>
+            <div class="ext-badges"><span class="tag">Web3</span><span class="tag">DevOps</span></div>
+          </div>
+          <h3>Decentralized Freelance Marketplace</h3>
+          <p>Multichain platform with EVM wallet auth, Soulbound Identity NFTs, on-chain Skill NFTs with proof-of-work validation, DAO governance for dispute resolution, and milestone-based escrow smart contracts.</p>
+          <div class="ext-stack">
+            <span>Solidity</span><span>React.js</span><span>Web3</span><span>Docker</span>
+          </div>
+          <div class="ext-footer">
+            <a href="#" class="btn-link"><i class="fab fa-github"></i> Code</a>
+            <a href="#" class="btn-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+          </div>
+        </div>
+        <div class="ext-card reveal" data-category="ai 3d">
+          <div class="ext-card-header">
+            <div class="ext-icon vision-icon"><i class="fas fa-cube"></i></div>
+            <div class="ext-badges"><span class="tag">AI/ML</span><span class="tag">3D Vision</span></div>
+          </div>
+          <h3>3D Space Reconstruction from Panorama</h3>
+          <p>End-to-end pipeline from a single 360° panorama using monocular depth estimation, object detection, and segmentation. Converts equirectangular to cube maps and lifts 2D detections into full 3D geometry.</p>
+          <div class="ext-stack">
+            <span>Python</span><span>PyTorch</span><span>Deep Learning</span><span>Linux</span>
+          </div>
+          <div class="ext-footer">
+            <a href="#" class="btn-link"><i class="fab fa-github"></i> Code</a>
+            <a href="#" class="btn-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">What I Know</span>
+        <h2>Tech Stack</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group reveal">
+          <h4><i class="fas fa-code"></i> Languages</h4>
+          <div class="skill-pills">
+            <span>Python</span><span>Java</span><span>C</span><span>C++</span>
+            <span>JavaScript</span><span>Solidity</span><span>HTML</span><span>CSS</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4><i class="fas fa-brain"></i> AI / ML</h4>
+          <div class="skill-pills">
+            <span>LLMs</span><span>BERT</span><span>PyTorch</span><span>TensorFlow</span>
+            <span>Scikit-learn</span><span>NumPy</span><span>Gen AI</span><span>Model Eval</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4><i class="fas fa-server"></i> Systems &amp; DevOps</h4>
+          <div class="skill-pills">
+            <span>Linux</span><span>Docker</span><span>Kubernetes</span><span>Git</span>
+            <span>Jenkins</span><span>Ansible</span><span>Terraform</span><span>Grafana</span>
+            <span>CI/CD</span><span>SSH</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4><i class="fas fa-globe"></i> Web &amp; Database</h4>
+          <div class="skill-pills">
+            <span>React.js</span><span>REST APIs</span><span>SQL</span><span>NoSQL</span><span>Web3</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4><i class="fas fa-link"></i> Blockchain</h4>
+          <div class="skill-pills">
+            <span>Solidity</span><span>EVM</span><span>Smart Contracts</span><span>NFTs</span><span>DAO</span><span>Web3.js</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4><i class="fas fa-tools"></i> Core CS</h4>
+          <div class="skill-pills">
+            <span>DSA</span><span>OOP</span><span>OS Concepts</span><span>System Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Credentials</span>
+        <h2>Certifications</h2>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card reveal">
+          <div class="cert-logo ibm"><i class="fas fa-award"></i></div>
+          <div class="cert-body">
+            <div class="cert-issuer">IBM · Adroit Technologies</div>
+            <h3>IBM Certified: DevOps Practitioner</h3>
+            <p>CI/CD pipeline design, Docker containerization, and automated cloud deployment. Hands-on with Git, Jenkins, Docker, and Kubernetes in production-style infrastructure.</p>
+            <span class="cert-date"><i class="fas fa-calendar"></i> July 2025</span>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-logo ms"><i class="fas fa-cloud"></i></div>
+          <div class="cert-body">
+            <div class="cert-issuer">Microsoft</div>
+            <h3>Azure Data Fundamentals (DP-900)</h3>
+            <p>Relational, non-relational, and big data systems. Cloud-based data storage, processing pipelines, and visualization on Microsoft Azure.</p>
+            <span class="cert-date"><i class="fas fa-calendar"></i> July 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Common Questions</span>
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-question"><span>Are you available for internships or full-time roles?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Yes! I'm actively looking for both internships and full-time roles, especially in AI/ML engineering, backend development, or DevOps. I'm available from August 2026 onwards.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question"><span>What kind of roles are you targeting?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>AI/ML Engineering, Backend/Systems Engineering, and DevOps/Platform Engineering. I'm also open to full-stack and blockchain development opportunities.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question"><span>Are you open to relocation?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Absolutely. I'm open to relocation anywhere in India or internationally, and comfortable with remote and hybrid arrangements.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question"><span>What's your preferred tech stack?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Python for AI/ML, Docker + Kubernetes for DevOps, React.js for web. For blockchain I work primarily with Solidity on EVM-compatible chains.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question"><span>Can I see your resume?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Yes! Download it from the button in the nav bar, or <a href="my-resume.pdf" download>click here</a>.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Let's Connect</span>
+        <h2>Get In Touch</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="contact-lead">I'm actively looking for opportunities. Whether it's a role, a project collaboration, or just to talk tech — my inbox is always open.</p>
+          <div class="contact-links">
+            <a href="mailto:phixbugs@gmail.com" class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div><strong>Email</strong><span>phixbugs@gmail.com</span></div>
+            </a>
+            <a href="https://www.linkedin.com/in/soy-praveen/" target="_blank" class="contact-item">
+              <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+              <div><strong>LinkedIn</strong><span>Let's connect professionally</span></div>
+            </a>
+            <a href="https://github.com/soy-praveen" target="_blank" class="contact-item">
+              <div class="contact-icon"><i class="fab fa-github"></i></div>
+              <div><strong>GitHub</strong><span>Check out my code</span></div>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">End portfolio.<span class="dot"></span></div>
+      <p>Sahukari Praveen · CS @ VIT Chennai</p>
+      <div class="footer-links">
+        <a href="https://github.com/soy-praveen" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/soy-praveen/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:phixbugs@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function handleFormSubmit(btn) {
+      btn.innerHTML = 'Sent! <i class="fas fa-check"></i>';
+      btn.style.background = 'var(--green)';
+      setTimeout(() => {
+        btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+        btn.style.background = '';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
