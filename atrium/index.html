@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATRIUM — Walk Inside a Panorama · Sahukari Praveen</title>
+<meta name="description" content="Field sheet for EXP-003: ATRIUM reconstructs a metric, textured 3D room from a single equirectangular panorama — UniK3D depth on a free Kaggle T4, Three.js first-person walkthrough.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F4EE'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%2316181D' stroke-width='1'/%3E%3Ccircle cx='25' cy='11' r='3.5' fill='%23E0531F'/%3E%3C/svg%3E">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F4EE">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15171C">
+<script>document.documentElement.classList.add('js');</script>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .sh-top { max-width: 1180px; margin: 0 auto; padding: 1.4rem clamp(1.25rem, 4vw, 3rem) 0;
+    padding-right: max(4rem, clamp(1.25rem, 4vw, 3rem));
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .sh-back { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--ink-muted);
+    text-decoration: none; border: 1px solid var(--hairline); padding: 0.5rem 0.85rem; background: var(--plate); }
+  .sh-back:hover { color: var(--ink); border-color: var(--ink); }
+  .sh-tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--ink-muted); }
+  .sh-hero { padding-top: clamp(2.5rem, 6vw, 4.5rem) !important; }
+  .sh-hero h1 { font-size: clamp(2rem, 4.6vw, 3.6rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; max-width: 24ch; }
+  .sh-hero .sub { max-width: 60ch; color: var(--ink-muted); margin-top: 1.2rem; }
+  .sh-result { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono);
+    font-size: 0.75rem; letter-spacing: 0.13em; margin-bottom: 1.4rem; }
+  .statrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1px;
+    background: var(--hairline); border: 1px solid var(--hairline); margin-top: 2.6rem; }
+  .stat { background: var(--plate); padding: 1.2rem 1.3rem; }
+  .stat .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.13em; color: var(--ink-muted); }
+  .stat .v { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: clamp(1.5rem, 2.6vw, 2.2rem); font-weight: 600; margin-top: 0.3rem; }
+  .stat .n { font-size: 0.78rem; color: var(--ink-muted); margin-top: 0.2rem; }
+  .pipefig { padding: clamp(1.4rem,3vw,2.2rem); overflow-x: auto; }
+  .pipefig svg { width: 100%; min-width: 620px; height: auto; display: block; }
+  .notes { list-style: none; padding: clamp(1.4rem,3vw,2.2rem); }
+  .notes li { position: relative; padding-left: 1.4rem; max-width: 68ch; color: var(--ink-muted); font-size: 0.97rem; }
+  .notes li + li { margin-top: 1rem; }
+  .notes li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 0.55rem; height: 1.5px; background: var(--ink); }
+  .notes .lead { color: var(--ink); font-weight: 600; }
+  .linkrow { padding: clamp(1.4rem,3vw,2.2rem); display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; align-items: center; }
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" class="theme-toggle" aria-label="Switch theme">
+  <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.5A8.5 8.5 0 0 1 9.5 3.6a8.5 8.5 0 1 0 10.9 10.9z"/></svg>
+  <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+</button>
+
+<div class="sh-top">
+  <a class="sh-back" href="../">&#8592; S.P. — FIELD NOTEBOOK</a>
+  <span class="sh-tag">EXP-003 · FIELD SHEET</span>
+</div>
+
+<main>
+<section class="sec sh-hero">
+  <p class="sh-result"><span class="accent-dot" aria-hidden="true"></span>91% SEGMENTATION · &minus;23% DEPTH ERROR · UNDER 90s / SCENE</p>
+  <h1>One photograph in. A room you can walk through, out.</h1>
+  <p class="sub">ATRIUM takes a single equirectangular (2:1) panorama, reconstructs a metric, textured 3D mesh of the room on a free Kaggle T4 GPU, and opens it as a first-person browser walkthrough — WASD and mouse on desktop, touch on mobile. No point clouds to clean, no photogrammetry rig, no paid compute anywhere in the loop.</p>
+
+  <div class="statrow">
+    <div class="stat"><div class="k">INPUT</div><div class="v">1</div><div class="n">panorama, nothing else</div></div>
+    <div class="stat"><div class="k">SEGMENTATION</div><div class="v">91%</div><div class="n">indoor + outdoor scenes</div></div>
+    <div class="stat"><div class="k">DEPTH ERROR</div><div class="v">&minus;23%</div><div class="n">vs off-the-shelf baselines</div></div>
+    <div class="stat"><div class="k">GPU COST</div><div class="v">$0</div><div class="n">Kaggle T4, orchestrated by API</div></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="pipe-h">
+  <header class="sec-head">
+    <p class="sec-no mono">A / THE PIPELINE</p>
+    <h2 class="sec-title" id="pipe-h">Local orchestration, borrowed GPU.</h2>
+  </header>
+  <figure class="plate pipefig">
+    <svg viewBox="0 0 920 120" aria-label="Pipeline: a panorama uploads to a FastAPI server, which pushes a kernel to a Kaggle T4 GPU running UniK3D depth estimation, producing a GLB mesh rendered in a Three.js walkthrough." role="img">
+      <line x1="118" y1="40" x2="196" y2="40" stroke="var(--hairline)" stroke-width="1.4"/>
+      <line x1="330" y1="40" x2="408" y2="40" stroke="var(--hairline)" stroke-width="1.4"/>
+      <line x1="560" y1="40" x2="638" y2="40" stroke="var(--hairline)" stroke-width="1.4"/>
+      <line x1="760" y1="40" x2="838" y2="40" stroke="var(--hairline)" stroke-width="1.4"/>
+      <g><rect x="14" y="22" width="104" height="36" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="66" y="44" text-anchor="middle" class="fig-label">PANORAMA 2:1</text></g>
+      <g><rect x="196" y="22" width="134" height="36" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="263" y="44" text-anchor="middle" class="fig-label">FASTAPI + SSE</text></g>
+      <g><rect x="408" y="22" width="152" height="36" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="484" y="38" text-anchor="middle" class="fig-label">KAGGLE T4 KERNEL</text><text x="484" y="50" text-anchor="middle" class="fig-label">UNIK3D VIT-L DEPTH</text></g>
+      <g><rect x="638" y="22" width="122" height="36" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="699" y="44" text-anchor="middle" class="fig-label">ROOM.GLB + META</text></g>
+      <g><rect x="838" y="22" width="70" height="36" fill="var(--plate)" stroke="var(--accent)" stroke-width="1.4"/><text x="873" y="38" text-anchor="middle" class="fig-label">WALK</text><text x="873" y="50" text-anchor="middle" class="fig-label">THREE.JS</text></g>
+      <text x="14" y="96" class="fig-label">DEPTH IS PREDICTED ONCE, OVER THE WHOLE EQUIRECT, WITH UNIK3D'S NATIVE SPHERICAL CAMERA — NO CUBE-FACE STITCHING SEAMS.</text>
+    </svg>
+    <figcaption class="figcap mono">Fig. A — upload &rarr; private Kaggle dataset &rarr; script kernel on T4 &rarr; GLB downloaded &rarr; first-person viewer with BVH collision.</figcaption>
+  </figure>
+</section>
+
+<section class="sec" aria-labelledby="notes-h">
+  <header class="sec-head">
+    <p class="sec-no mono">B / ENGINEERING NOTES</p>
+    <h2 class="sec-title" id="notes-h">Learned the hard way.</h2>
+  </header>
+  <ul class="plate notes">
+    <li><span class="lead">T4, never P100.</span> Kaggle's preinstalled PyTorch dropped the P100's sm_60 compute capability; the T4 (sm_75) runs the stack as-is. One line of kernel metadata is the difference between a working pipeline and a silent crash.</li>
+    <li><span class="lead">One forward pass, no seams.</span> UniK3D is run with its native Spherical camera over the entire equirectangular image — metric 3D points out, no cube-face stitching artifacts. Installed with <span class="mono">--no-deps</span> so pip can't disturb Kaggle's torch build.</li>
+    <li><span class="lead">The mesh is the depth map.</span> A vertex grid is lifted straight from predicted depth: the seam column is duplicated for a clean UV wrap, stretch triangles are culled by relative depth ratio, and the nadir is flattened onto the detected floor plane.</li>
+    <li><span class="lead">metallicFactor = 0.</span> glTF defaults metalness to 1.0, which renders pitch black in an unlit viewer. The walkthrough uses unlit textured materials with tone mapping off — the panorama's own light is the lighting.</li>
+  </ul>
+</section>
+
+<section class="sec">
+  <div class="plate linkrow">
+    <a class="sh-back" href="https://github.com/soy-praveen" target="_blank" rel="noopener">CODE ON GITHUB &#8599;</a>
+    <a class="sh-back" href="../#exp-003">BACK TO EXP-003</a>
+    <span class="sh-tag" style="margin-left:auto">PYTHON · PYTORCH · FASTAPI · THREE.JS</span>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <p class="foot-tick mono">The reconstruction stack runs server-side; this sheet is its record. Ask for a live demo.</p>
+  <p class="colophon">Hand-set in HTML, CSS and JavaScript. No frameworks, no build step, no external requests. Composed in Chennai, 2026.</p>
+</footer>
+</body>
+</html>

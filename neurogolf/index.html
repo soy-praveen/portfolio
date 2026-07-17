@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroGolf — 400 Networks · Sahukari Praveen</title>
+<meta name="description" content="Extended record of EXP-002: 400 task-specific ONNX networks for ARC-AGI, median 103 parameters, Silver Medal at IJCAI-ECAI 2026 NeuroGolf. Every number on this page is mined from the actual submission files.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F4EE'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%2316181D' stroke-width='1'/%3E%3Ccircle cx='25' cy='11' r='3.5' fill='%23E0531F'/%3E%3C/svg%3E">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F4EE">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15171C">
+<script>document.documentElement.classList.add('js');</script>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .ng-top {
+    max-width: 1180px; margin: 0 auto;
+    padding: 1.4rem clamp(1.25rem, 4vw, 3rem) 0;
+    padding-right: max(4rem, clamp(1.25rem, 4vw, 3rem));
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  }
+  .ng-back {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
+    color: var(--ink-muted); text-decoration: none;
+    border: 1px solid var(--hairline); padding: 0.5rem 0.85rem; background: var(--plate);
+  }
+  .ng-back:hover { color: var(--ink); border-color: var(--ink); }
+  .ng-tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--ink-muted); }
+  .ng-hero { padding-top: clamp(2.5rem, 6vw, 4.5rem) !important; }
+  .ng-hero h1 {
+    font-size: clamp(2rem, 4.6vw, 3.8rem); font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1.04; max-width: 22ch;
+  }
+  .ng-hero .sub { max-width: 60ch; color: var(--ink-muted); margin-top: 1.2rem; }
+  .ng-result {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.13em;
+    margin-bottom: 1.4rem; color: var(--ink);
+  }
+  .statrow {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1px; background: var(--hairline); border: 1px solid var(--hairline);
+    margin-top: 2.6rem;
+  }
+  .stat { background: var(--plate); padding: 1.2rem 1.3rem; }
+  .stat .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.13em; color: var(--ink-muted); }
+  .stat .v { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: clamp(1.5rem, 2.6vw, 2.2rem); font-weight: 600; margin-top: 0.3rem; }
+  .stat .n { font-size: 0.78rem; color: var(--ink-muted); margin-top: 0.2rem; }
+  .fieldwrap { position: relative; }
+  #field { display: block; width: 100%; height: 320px; background: var(--paper); border: 1px solid var(--hairline); cursor: crosshair; }
+  .tip {
+    position: absolute; pointer-events: none; display: none;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.06em; line-height: 1.7;
+    padding: 0.5rem 0.7rem; white-space: nowrap; z-index: 5;
+  }
+  .detail {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+    color: var(--ink-muted); margin-top: 0.8rem; min-height: 1.4em;
+  }
+  .metricbox { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(1.5rem,3vw,3rem); padding: clamp(1.4rem,3vw,2.2rem); align-items: center; }
+  .formula { font-family: var(--mono); font-size: clamp(1rem, 2vw, 1.35rem); letter-spacing: 0.02em; }
+  .formula .hl { color: var(--accent); }
+  .metric-note { font-size: 0.9rem; color: var(--ink-muted); margin-top: 1rem; max-width: 46ch; }
+  .costlab { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; color: var(--ink-muted); display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+  .costout { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 2rem; font-weight: 600; margin-top: 0.9rem; }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .opsgrid { padding: clamp(1.4rem,3vw,2.2rem); }
+  .oprow { display: grid; grid-template-columns: 130px 1fr 60px; gap: 1rem; align-items: center; padding: 0.28rem 0; }
+  .oprow .nm { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; }
+  .oprow .bar { height: 8px; background: var(--ink); opacity: 0.85; min-width: 2px; }
+  .oprow:nth-child(-n+3) .bar { background: var(--accent); }
+  .oprow .ct { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 0.7rem; color: var(--ink-muted); text-align: right; }
+  .tinygrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); }
+  .tiny { background: var(--plate); padding: 1.2rem 1.3rem; }
+  .tiny h3 { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.13em; font-weight: 700; }
+  .tiny .meta { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ink-muted); margin: 0.3rem 0 0.9rem; }
+  .tensor { margin-top: 0.7rem; }
+  .tensor .tname { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--ink-muted); margin-bottom: 0.3rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .wcells { display: flex; flex-wrap: wrap; gap: 2px; }
+  .wc { width: 14px; height: 14px; border: 1px solid var(--hairline); }
+  .puregraph { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--data2); border-left: 2px solid var(--data2); padding: 0.5rem 0.8rem; margin-top: 0.6rem; }
+  .ng-foot { text-align: left; }
+  @media (max-width: 760px) { .metricbox { grid-template-columns: 1fr; } .oprow { grid-template-columns: 96px 1fr 52px; } }
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" class="theme-toggle" aria-label="Switch theme">
+  <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.5A8.5 8.5 0 0 1 9.5 3.6a8.5 8.5 0 1 0 10.9 10.9z"/></svg>
+  <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+</button>
+
+<div class="ng-top">
+  <a class="ng-back" href="../">&#8592; S.P. — FIELD NOTEBOOK</a>
+  <span class="ng-tag">EXP-002 · EXTENDED RECORD</span>
+</div>
+
+<main>
+<section class="sec ng-hero">
+  <p class="ng-result"><span class="accent-dot" aria-hidden="true"></span>SILVER MEDAL · 79 / 3,061 TEAMS · IJCAI-ECAI 2026</p>
+  <h1>Four hundred networks. One hundred thousand parameters. Total.</h1>
+  <p class="sub">NeuroGolf scores a network by how small it is — every parameter and every byte is a logarithmic penalty, and only exact output correctness counts. My submission solves 400 ARC-AGI image transformations with less than 1% of the parameters in a single ResNet-18. Every number on this page is mined directly from the 400 <span class="mono num">.onnx</span> files of the actual submission.</p>
+
+  <div class="statrow">
+    <div class="stat"><div class="k">OFFICIAL SCORE</div><div class="v">7,515</div><div class="n">of 10,000 · leaderboard</div></div>
+    <div class="stat"><div class="k">MEDIAN SIZE</div><div class="v">103</div><div class="n">parameters per network</div></div>
+    <div class="stat"><div class="k">SMALLEST FILE</div><div class="v">148 B</div><div class="n">a complete, correct model</div></div>
+    <div class="stat"><div class="k">ZERO-PARAM NETS</div><div class="v">9</div><div class="n">pure computation graphs</div></div>
+    <div class="stat"><div class="k">WHOLE SUBMISSION</div><div class="v">1.2 MB</div><div class="n">99,912 params · 400 files</div></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="field-h">
+  <header class="sec-head">
+    <p class="sec-no mono">A / THE COST FIELD</p>
+    <h2 class="sec-title" id="field-h">All 400 tasks, drawn to scale.</h2>
+  </header>
+  <p class="sec-note">One dot per task — horizontal is task number, vertical is the score that network earned (higher is smaller). Teal dots are the nine zero-parameter solutions. Hover any dot for the readout; the orange line is the median network: <span class="mono num">103</span> parameters.</p>
+  <div class="plate" style="padding: 1.3rem 1.4rem;">
+    <div class="fieldwrap">
+      <canvas id="field" aria-label="Scatter chart of all 400 task networks by score. Most cluster near the top of the scale; nine zero-parameter graphs are highlighted in teal." role="img"></canvas>
+      <div class="tip" id="tip"></div>
+    </div>
+    <p class="detail" id="detail">HOVER A DOT — OR TAP ONE — FOR THE PER-TASK RECORD.</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="metric-h">
+  <header class="sec-head">
+    <p class="sec-no mono">B / THE METRIC</p>
+    <h2 class="sec-title" id="metric-h">Why every byte hurts.</h2>
+  </header>
+  <div class="plate metricbox">
+    <div>
+      <p class="formula">score = max(1, 25 &minus; ln(<span class="hl">cost</span>))<br>
+      <span style="font-size:0.72em; color:var(--ink-muted)">cost = parameters + byte footprint</span></p>
+      <p class="metric-note">The penalty is logarithmic: shaving a network from 1,000 to 100 costs-worth buys as much as shaving 100,000 to 10,000. The winning move is int8 quantization and hand-pruned graphs, not accuracy tricks. I iterated across 1,100+ evaluated submissions on this curve.</p>
+    </div>
+    <div>
+      <div class="costlab"><span>DRAG THE COST</span><span id="costval">1,000</span></div>
+      <input type="range" id="cost" min="2" max="1105" value="690" aria-label="Network cost in parameters plus bytes">
+      <div class="costout" id="scoreout">score = 18.09</div>
+      <p class="metric-note" id="costnote">a typical network in this submission</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="ops-h">
+  <header class="sec-head">
+    <p class="sec-no mono">C / THE ARSENAL</p>
+    <h2 class="sec-title" id="ops-h">Not multilayer perceptrons. Machines.</h2>
+  </header>
+  <p class="sec-note">The 400 solutions use <span class="mono num">90+</span> distinct ONNX operator types. Bitwise logic, Einsum contractions, scatter operations — many tasks are solved by a hand-built computation graph that happens to be a valid neural network. The top operators, counted across every graph:</p>
+  <div class="plate opsgrid" id="ops"></div>
+</section>
+
+<section class="sec" aria-labelledby="tiny-h">
+  <header class="sec-head">
+    <p class="sec-no mono">D / THE SMALLEST</p>
+    <h2 class="sec-title" id="tiny-h">Entire networks, every weight shown.</h2>
+  </header>
+  <p class="sec-note">The eight smallest models in the submission, tensors decoded straight from the files. Orange cells are positive weights, teal are negative; intensity is magnitude. Where there is nothing to draw, that is the point.</p>
+  <div class="tinygrid" id="tiny"></div>
+</section>
+
+<section class="sec">
+  <div class="plate" style="padding: clamp(1.4rem,3vw,2.2rem); display:flex; flex-wrap:wrap; gap:1rem 2.5rem; align-items:center;">
+    <a class="ng-back" href="https://www.kaggle.com/competitions/neurogolf-2026" target="_blank" rel="noopener">COMPETITION &#8599;</a>
+    <a class="ng-back" href="https://www.kaggle.com/praveensahukari" target="_blank" rel="noopener">KAGGLE PROFILE &#8599;</a>
+    <a class="ng-back" href="../#exp-002">BACK TO EXP-002 &#8599;</a>
+    <span class="ng-tag" style="margin-left:auto">RECONSTRUCTED FROM SUBMISSION 2026</span>
+  </div>
+</section>
+</main>
+
+<footer class="foot ng-foot">
+  <p class="foot-tick mono">Chart cost figures are recomputed from the shipped files (params + on-disk bytes); the official leaderboard applied the same formula to its own footprint accounting.</p>
+  <p class="colophon">Hand-set in HTML, CSS and JavaScript. No frameworks, no build step, no external requests. Composed in Chennai, 2026.</p>
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.NG;
+  if (!D) return;
+  var INK, ACCENT, TEAL, MUTED, HAIR;
+  function refreshNgPalette() {
+    var cs = getComputedStyle(document.documentElement);
+    var v = function (n, fb) { var x = cs.getPropertyValue(n).trim(); return x || fb; };
+    INK = v('--ink', '#16181D'); ACCENT = v('--accent', '#E0531F');
+    TEAL = v('--data2', '#1F6F6B'); MUTED = v('--ink-muted', '#4A5160');
+    HAIR = v('--hairline', '#D8D2C4');
+  }
+  refreshNgPalette();
+
+  /* ---------------- cost field ---------------- */
+  var canvas = document.getElementById('field');
+  var tip = document.getElementById('tip');
+  var detail = document.getElementById('detail');
+  var ctx = canvas.getContext('2d');
+  var pts = [];
+  function draw() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = canvas.clientWidth, H = canvas.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    var padL = 44, padR = 14, padT = 16, padB = 26;
+    var yMin = 8, yMax = 25;                    // score axis
+    function sx(id) { return padL + (id - 1) / 399 * (W - padL - padR); }
+    function sy(s) { return padT + (yMax - Math.max(yMin, s)) / (yMax - yMin) * (H - padT - padB); }
+    // gridlines
+    ctx.font = '9.5px ui-monospace, Consolas, monospace';
+    ctx.fillStyle = MUTED; ctx.strokeStyle = HAIR; ctx.lineWidth = 1;
+    [10, 15, 20, 25].forEach(function (s) {
+      ctx.beginPath(); ctx.moveTo(padL, sy(s)); ctx.lineTo(W - padR, sy(s)); ctx.stroke();
+      ctx.fillText(String(s), 14, sy(s) + 3);
+    });
+    ctx.fillText('SCORE', 14, padT - 4);
+    ctx.fillText('TASK 001', padL, H - 8);
+    ctx.fillText('TASK 400', W - padR - 52, H - 8);
+    // median param line label
+    pts = [];
+    D.rows.forEach(function (r) {
+      var x = sx(r[0]), y = sy(r[3]);
+      ctx.fillStyle = r[2] === 0 ? TEAL : INK;
+      ctx.globalAlpha = r[2] === 0 ? 1 : 0.55;
+      ctx.fillRect(x - 1.5, y - 1.5, 3, 3);
+      pts.push({ x: x, y: y, r: r });
+    });
+    ctx.globalAlpha = 1;
+    // median marker: median score of the field
+    var scores = D.rows.map(function (r) { return r[3]; }).sort(function (a, b) { return a - b; });
+    var med = scores[Math.floor(scores.length / 2)];
+    ctx.strokeStyle = ACCENT; ctx.setLineDash([5, 5]);
+    ctx.beginPath(); ctx.moveTo(padL, sy(med)); ctx.lineTo(W - padR, sy(med)); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = ACCENT;
+    ctx.fillText('MEDIAN NET: 103 PARAMS', padL + 6, sy(med) - 6);
+  }
+  function nearest(mx, my) {
+    var best = null, bd = 12;
+    for (var i = 0; i < pts.length; i++) {
+      var d = Math.hypot(pts[i].x - mx, pts[i].y - my);
+      if (d < bd) { bd = d; best = pts[i]; }
+    }
+    return best;
+  }
+  function fmt(r) {
+    return 'TASK ' + String(r[0]).padStart(3, '0') + ' · ' + r[2].toLocaleString('en-US') +
+      ' PARAMS · ' + r[1].toLocaleString('en-US') + ' B · SCORE ' + r[3].toFixed(2) +
+      ' · TOP OP: ' + r[4].toUpperCase() + ' · DTYPES: ' + (r[6] || 'none').toUpperCase();
+  }
+  canvas.addEventListener('mousemove', function (e) {
+    var rect = canvas.getBoundingClientRect();
+    var hit = nearest(e.clientX - rect.left, e.clientY - rect.top);
+    if (hit) {
+      tip.style.display = 'block';
+      tip.style.left = Math.min(rect.width - 220, Math.max(0, hit.x + 10)) + 'px';
+      tip.style.top = (hit.y - 40) + 'px';
+      tip.textContent = 'TASK ' + String(hit.r[0]).padStart(3, '0') + ' · ' + hit.r[2] + 'p · ' + hit.r[1] + 'B · ' + hit.r[3].toFixed(1);
+    } else tip.style.display = 'none';
+  });
+  canvas.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+  canvas.addEventListener('click', function (e) {
+    var rect = canvas.getBoundingClientRect();
+    var hit = nearest(e.clientX - rect.left, e.clientY - rect.top);
+    if (hit) detail.textContent = fmt(hit.r);
+  });
+  draw();
+  window.addEventListener('orrerytheme', function () { refreshNgPalette(); draw(); });
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(draw, 150); });
+
+  /* ---------------- metric slider ---------------- */
+  var slider = document.getElementById('cost');
+  var costval = document.getElementById('costval');
+  var scoreout = document.getElementById('scoreout');
+  var costnote = document.getElementById('costnote');
+  function costFromSlider(v) { return Math.round(Math.exp(v / 100)); }   // log scale 2..1105 -> e^.02..e^11
+  function upd() {
+    var c = costFromSlider(+slider.value);
+    var s = Math.max(1, 25 - Math.log(c));
+    costval.textContent = c.toLocaleString('en-US');
+    scoreout.textContent = 'score = ' + s.toFixed(2);
+    costnote.textContent =
+      c < 200 ? 'smaller than my smallest file (148 B)' :
+      c < 900 ? 'a typical network in this submission' :
+      c < 20000 ? 'heavier than most of my 400' :
+      'a "small" model by normal standards - and a losing one here';
+  }
+  slider.addEventListener('input', upd);
+  upd();
+
+  /* ---------------- ops bars ---------------- */
+  var ops = document.getElementById('ops');
+  var max = D.topOps[0][1];
+  D.topOps.forEach(function (o) {
+    var row = document.createElement('div');
+    row.className = 'oprow';
+    row.innerHTML = '<span class="nm">' + o[0] + '</span>' +
+      '<span class="bar" style="width:' + (o[1] / max * 100) + '%"></span>' +
+      '<span class="ct">' + o[1].toLocaleString('en-US') + '</span>';
+    ops.appendChild(row);
+  });
+
+  /* ---------------- smallest nets ---------------- */
+  var tiny = document.getElementById('tiny');
+  var ids = Object.keys(D.featured).map(Number).sort(function (a, b) {
+    var ba = D.rows.find(function (r) { return r[0] === a; })[1];
+    var bb = D.rows.find(function (r) { return r[0] === b; })[1];
+    return ba - bb;
+  });
+  ids.forEach(function (id) {
+    var row = D.rows.find(function (r) { return r[0] === id; });
+    var card = document.createElement('div');
+    card.className = 'tiny';
+    var h = '<h3>TASK ' + String(id).padStart(3, '0') + '</h3>' +
+      '<p class="meta">' + row[1] + ' BYTES · ' + row[2] + ' PARAMS · SCORE ' + row[3].toFixed(2) + '</p>';
+    var tensors = D.featured[id];
+    if (!tensors.length) {
+      h += '<p class="puregraph">0 LEARNED PARAMETERS.<br>THE ENTIRE SOLUTION IS THE GRAPH ITSELF.</p>';
+    }
+    card.innerHTML = h;
+    tensors.forEach(function (t) {
+      var div = document.createElement('div');
+      div.className = 'tensor';
+      var nm = document.createElement('p');
+      nm.className = 'tname';
+      nm.textContent = (t.name || 'tensor') + ' · ' + (t.dims.join('×') || 'scalar') + ' · ' + t.dtype;
+      div.appendChild(nm);
+      var wc = document.createElement('div');
+      wc.className = 'wcells';
+      var mx = Math.max.apply(null, t.weights.map(Math.abs).concat([1e-9]));
+      t.weights.forEach(function (w) {
+        var c = document.createElement('span');
+        c.className = 'wc';
+        var a = Math.min(1, Math.abs(w) / mx);
+        var pct = Math.round((0.15 + a * 0.85) * 100);
+        c.style.background = w > 0 ? 'color-mix(in srgb, var(--accent) ' + pct + '%, transparent)'
+                           : w < 0 ? 'color-mix(in srgb, var(--data2) ' + pct + '%, transparent)' : 'transparent';
+        c.title = String(w);
+        wc.appendChild(c);
+      });
+      div.appendChild(wc);
+      card.appendChild(div);
+    });
+    tiny.appendChild(card);
+  });
+})();
+</script>
+</body>
+</html>

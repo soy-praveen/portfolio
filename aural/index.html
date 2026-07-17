@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURAL — Spatial Audio Atelier</title>
+  <meta name="description" content="Transform any track into immersive 8D audio. Place sound anywhere in space around you, sculpt its orbit, and export the result." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%23c9a24b' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='2.7' fill='%23c9a24b'/%3E%3Ccircle cx='24.5' cy='7.5' r='3' fill='%23c9a24b'/%3E%3C/svg%3E" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ SVG ICON SPRITE ============ -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <defs>
+      <symbol id="i-logo" viewBox="0 0 32 32">
+        <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="16" cy="16" r="2.7" fill="currentColor"/>
+        <circle cx="24.5" cy="7.5" r="3" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/>
+          <line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/>
+          <line x1="5.3" y1="5.3" x2="7" y2="7"/><line x1="17" y1="17" x2="18.7" y2="18.7"/>
+          <line x1="18.7" y1="5.3" x2="17" y2="7"/><line x1="7" y1="17" x2="5.3" y2="18.7"/>
+        </g>
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24">
+        <path d="M20.2 14.2A8.5 8.5 0 0 1 9.8 3.8 8.5 8.5 0 1 0 20.2 14.2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-play" viewBox="0 0 24 24">
+        <path d="M7.5 4.8v14.4c0 .8.9 1.3 1.6.9l11-7.2c.6-.4.6-1.4 0-1.8l-11-7.2c-.7-.4-1.6.1-1.6.9Z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24">
+        <rect x="6" y="4.5" width="3.6" height="15" rx="1" fill="currentColor"/>
+        <rect x="14.4" y="4.5" width="3.6" height="15" rx="1" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-loop" viewBox="0 0 24 24">
+        <path d="M17 3.5 20 6.5 17 9.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20 6.5H8.5A4.5 4.5 0 0 0 4 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M7 20.5 4 17.5 7 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4 17.5h11.5A4.5 4.5 0 0 0 20 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="i-import" viewBox="0 0 24 24">
+        <path d="M12 3v11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M7.5 9.8 12 14.3l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4 15.5v3A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="i-export" viewBox="0 0 24 24">
+        <path d="M12 14V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M7.5 7.2 12 2.7l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4 15.5v3A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="i-orbit" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <ellipse cx="12" cy="12" rx="10" ry="4.2" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.8"/>
+        <circle cx="20.6" cy="9.2" r="1.8" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-hand" viewBox="0 0 24 24">
+        <path d="M12 21c-3.4 0-4.9-1.7-6.5-4.9-.8-1.6-1.6-3-.5-3.8 1-.7 2 .1 2.8 1.2V5.3c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4V11m0 0V3.9c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4V11m0 0V5c0-.8.6-1.4 1.4-1.4S16.2 4.2 16.2 5v6.5m0 0V7.2c0-.8.6-1.4 1.4-1.4S19 6.4 19 7.2v7.9C19 18.9 16.5 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-wave" viewBox="0 0 24 24">
+        <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <line x1="3" y1="10" x2="3" y2="14"/><line x1="7" y1="7" x2="7" y2="17"/>
+          <line x1="11" y1="4" x2="11" y2="20"/><line x1="15" y1="8" x2="15" y2="16"/>
+          <line x1="19" y1="10.5" x2="19" y2="13.5"/><line x1="23" y1="11.5" x2="23" y2="12.5" opacity="0"/>
+        </g>
+      </symbol>
+      <symbol id="i-sphere" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <ellipse cx="12" cy="12" rx="9" ry="3.6" fill="none" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+        <ellipse cx="12" cy="12" rx="3.6" ry="9" fill="none" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+      </symbol>
+      <symbol id="i-ear" viewBox="0 0 24 24">
+        <path d="M6.5 9.5a5.5 5.5 0 1 1 11 0c0 2.6-1.8 3.7-3 5-1 1.1-1.2 2-1.3 3.2-.2 1.9-1.3 3.3-3.2 3.3-1.4 0-2.4-.8-2.9-2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M9.7 9.6a2.6 2.6 0 1 1 5.2 0c0 1.5-1.2 2.1-2 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="i-crown" viewBox="0 0 24 24">
+        <path d="M4 17.5 2.8 7.8l4.7 3.4L12 4.5l4.5 6.7 4.7-3.4L20 17.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <line x1="5.5" y1="20.5" x2="18.5" y2="20.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M4 12h15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="m13.5 5.5 6.5 6.5-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m4.5 12.5 5 5L19.5 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-headphones" viewBox="0 0 24 24">
+        <path d="M4 15v-3a8 8 0 0 1 16 0v3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="3" y="14" width="4.2" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="16.8" y="14" width="4.2" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      </symbol>
+      <symbol id="i-note" viewBox="0 0 24 24">
+        <path d="M9 18.5V5.3c0-.5.3-.9.8-1l8.4-1.8c.7-.1 1.3.4 1.3 1V16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <ellipse cx="6.2" cy="18.6" rx="2.8" ry="2.3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <ellipse cx="16.7" cy="16.1" rx="2.8" ry="2.3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ PAGE TRANSITION VEIL ============ -->
+  <div class="veil" aria-hidden="true">
+    <div class="veil-curtain"></div>
+    <div class="veil-mark">
+      <span class="vm-core"></span>
+      <span class="vm-orbit"><span class="vm-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <a class="brand" href="#home" data-nav="home">
+      <svg class="brand-mark"><use href="#i-logo"/></svg>
+      <span class="brand-word">AURAL</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#home" data-nav="home" class="nav-link is-active">Home</a>
+      <a href="#studio" data-nav="studio" class="nav-link">Studio</a>
+      <a href="#guide" data-nav="guide" class="nav-link">Guide</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+        <svg class="ico-sun"><use href="#i-sun"/></svg>
+        <svg class="ico-moon"><use href="#i-moon"/></svg>
+      </button>
+      <a href="#studio" data-nav="studio" class="btn btn-gold btn-sm header-cta">Open Studio</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ VIEW · HOME ============ -->
+    <section class="view view-home is-active" id="view-home">
+      <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <p class="hero-eyebrow reveal" style="--d:0">The Spatial Audio Atelier</p>
+        <h1 class="hero-title">
+          <span class="reveal" style="--d:1">Sound that moves</span>
+          <span class="reveal hero-title-em" style="--d:2"><em>around</em> you.</span>
+        </h1>
+        <p class="hero-sub reveal" style="--d:3">
+          Import any track and place it anywhere in the space around your head —
+          circling behind you, rising above, drifting past your shoulder.
+          Sculpt the motion, watch it live in three dimensions, and export the result.
+        </p>
+        <div class="hero-actions reveal" style="--d:4">
+          <a href="#studio" data-nav="studio" class="btn btn-gold btn-lg">
+            Enter the Studio
+            <svg class="btn-ico"><use href="#i-arrow"/></svg>
+          </a>
+          <a href="#guide" data-nav="guide" class="btn btn-ghost btn-lg">How it works</a>
+        </div>
+        <p class="hero-note reveal" style="--d:5">
+          <svg class="note-ico"><use href="#i-headphones"/></svg>
+          Best experienced with headphones
+        </p>
+      </div>
+
+      <div class="feature-row">
+        <article class="feature reveal" style="--d:6">
+          <svg class="feature-ico"><use href="#i-orbit"/></svg>
+          <h3>Orbital Motion</h3>
+          <p>Five sculpted movement paths — from a classic circling orbit to pendulum sweeps and slow celestial drift.</p>
+        </article>
+        <article class="feature reveal" style="--d:7">
+          <svg class="feature-ico"><use href="#i-sphere"/></svg>
+          <h3>Living Visualizer</h3>
+          <p>A three-dimensional globe of light around a listener. Every point brightens where your sound is playing.</p>
+        </article>
+        <article class="feature reveal" style="--d:8">
+          <svg class="feature-ico"><use href="#i-hand"/></svg>
+          <h3>Manual Placement</h3>
+          <p>Take the sound in your own hands. Drag it to any position on the sphere and hold it exactly there.</p>
+        </article>
+        <article class="feature reveal" style="--d:9">
+          <svg class="feature-ico"><use href="#i-export"/></svg>
+          <h3>Studio Export</h3>
+          <p>Render your spatialized mix offline — full fidelity, with motion and ambience — to a WAV file.</p>
+        </article>
+      </div>
+
+      <footer class="site-footer">
+        <span>AURAL · Spatial Audio Atelier</span>
+        <span class="footer-dot"></span>
+        <span>All processing happens in your browser. Nothing is uploaded.</span>
+      </footer>
+    </section>
+
+    <!-- ============ VIEW · STUDIO ============ -->
+    <section class="view view-studio" id="view-studio">
+
+      <!-- Import stage (shown before a file is loaded) -->
+      <div class="import-stage" id="importStage">
+        <div class="import-card" id="dropZone" tabindex="0" role="button" aria-label="Import an audio file">
+          <div class="import-ring">
+            <svg class="import-ico"><use href="#i-import"/></svg>
+          </div>
+          <h2>Bring in a track</h2>
+          <p>Drop an audio file here, or browse your library.<br/>MP3, WAV, FLAC, OGG, M4A — it stays on your device.</p>
+          <div class="import-actions">
+            <button class="btn btn-gold" id="browseBtn">
+              <svg class="btn-ico"><use href="#i-note"/></svg>
+              Choose Audio File
+            </button>
+            <button class="btn btn-ghost" id="demoBtn">Try the demo tone</button>
+          </div>
+          <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.flac,.ogg,.m4a,.aac" hidden />
+        </div>
+      </div>
+
+      <!-- Workspace (hidden until a file is loaded) -->
+      <div class="workspace" id="workspace" hidden>
+
+        <div class="stage-pane">
+          <div class="stage-head">
+            <div class="track-id">
+              <svg class="track-ico"><use href="#i-note"/></svg>
+              <div class="track-meta">
+                <span class="track-name" id="trackName">—</span>
+                <span class="track-sub" id="trackSub">Stereo · 44.1 kHz</span>
+              </div>
+            </div>
+            <div class="stage-head-actions">
+              <span class="pos-readout" id="posReadout">Front</span>
+              <button class="btn btn-ghost btn-sm" id="changeTrackBtn">Change track</button>
+            </div>
+          </div>
+
+          <div class="stage-canvas-wrap" id="stageWrap">
+            <canvas id="stageCanvas"></canvas>
+            <div class="stage-hint" id="stageHint">Drag to look around · In manual mode, drag the golden orb</div>
+          </div>
+
+          <div class="transport">
+            <button class="tbtn tbtn-main" id="playBtn" aria-label="Play">
+              <svg class="ico-play"><use href="#i-play"/></svg>
+              <svg class="ico-pause"><use href="#i-pause"/></svg>
+            </button>
+            <span class="t-time" id="timeCur">0:00</span>
+            <div class="waveform" id="waveWrap">
+              <canvas id="waveCanvas"></canvas>
+              <div class="wave-cursor" id="waveCursor"></div>
+            </div>
+            <span class="t-time" id="timeTotal">0:00</span>
+            <button class="tbtn" id="loopBtn" aria-label="Toggle loop" title="Loop">
+              <svg><use href="#i-loop"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <aside class="control-pane">
+
+          <div class="cgroup">
+            <h4 class="cgroup-title">Motion</h4>
+            <div class="mode-switch" id="modeSwitch" role="tablist" aria-label="Positioning mode">
+              <button class="mode-btn is-active" data-mode="auto" role="tab" aria-selected="true">
+                <svg><use href="#i-orbit"/></svg> Auto Orbit
+              </button>
+              <button class="mode-btn" data-mode="manual" role="tab" aria-selected="false">
+                <svg><use href="#i-hand"/></svg> Manual
+              </button>
+              <span class="mode-thumb"></span>
+            </div>
+
+            <div class="auto-controls" id="autoControls">
+              <label class="field-label">Path</label>
+              <div class="path-grid" id="pathGrid">
+                <button class="chip is-active" data-path="orbit">Orbit</button>
+                <button class="chip" data-path="pendulum">Pendulum</button>
+                <button class="chip" data-path="wave">Wave Orbit</button>
+                <button class="chip" data-path="eight">Figure Eight</button>
+                <button class="chip" data-path="drift">Celestial Drift</button>
+              </div>
+
+              <div class="slider-row">
+                <label for="speedSlider">Speed</label>
+                <input type="range" id="speedSlider" min="1" max="30" step="0.5" value="8" />
+                <span class="slider-val" id="speedVal">8.0 rpm</span>
+              </div>
+              <div class="slider-row">
+                <label for="dirToggleRow">Direction</label>
+                <div class="seg" id="dirSeg">
+                  <button class="seg-btn is-active" data-dir="1">Clockwise</button>
+                  <button class="seg-btn" data-dir="-1">Counter</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="manual-controls" id="manualControls" hidden>
+              <label class="field-label">Position — drag the point</label>
+              <div class="pad-wrap">
+                <div class="pad" id="posPad">
+                  <span class="pad-axis pad-axis-v"></span>
+                  <span class="pad-axis pad-axis-h"></span>
+                  <span class="pad-ring pad-ring-1"></span>
+                  <span class="pad-ring pad-ring-2"></span>
+                  <span class="pad-label pad-n">Front</span>
+                  <span class="pad-label pad-s">Behind</span>
+                  <span class="pad-label pad-w">Left</span>
+                  <span class="pad-label pad-e">Right</span>
+                  <span class="pad-dot" id="padDot"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="slider-row">
+              <label for="distSlider">Distance</label>
+              <input type="range" id="distSlider" min="1" max="6" step="0.1" value="2.6" />
+              <span class="slider-val" id="distVal">2.6 m</span>
+            </div>
+            <div class="slider-row">
+              <label for="elevSlider">Elevation</label>
+              <input type="range" id="elevSlider" min="-1" max="1" step="0.05" value="0" />
+              <span class="slider-val" id="elevVal">Level</span>
+            </div>
+          </div>
+
+          <div class="cgroup">
+            <h4 class="cgroup-title">Ambience</h4>
+            <div class="slider-row">
+              <label for="reverbSlider">Reverb</label>
+              <input type="range" id="reverbSlider" min="0" max="1" step="0.01" value="0.22" />
+              <span class="slider-val" id="reverbVal">22%</span>
+            </div>
+            <div class="slider-row">
+              <label for="volumeSlider">Volume</label>
+              <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.9" />
+              <span class="slider-val" id="volumeVal">90%</span>
+            </div>
+          </div>
+
+          <div class="cgroup cgroup-export">
+            <h4 class="cgroup-title">Render</h4>
+            <p class="export-note">Renders the full track with the current motion and ambience settings into a stereo WAV file.</p>
+            <button class="btn btn-gold btn-block" id="exportBtn">
+              <svg class="btn-ico"><use href="#i-export"/></svg>
+              <span id="exportLabel">Export 8D Audio</span>
+            </button>
+            <div class="export-bar" id="exportBar"><span></span></div>
+          </div>
+
+        </aside>
+      </div>
+
+      <div class="drop-veil" id="dropVeil" aria-hidden="true">
+        <div class="drop-veil-inner">
+          <svg><use href="#i-import"/></svg>
+          <span>Release to import</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIEW · GUIDE ============ -->
+    <section class="view view-guide" id="view-guide">
+      <div class="guide-inner">
+        <p class="guide-eyebrow">Guide</p>
+        <h2 class="guide-title">The craft of spatial sound</h2>
+        <p class="guide-lede">
+          8D audio is an illusion of space. By moving a sound source around a virtual head —
+          using the same head-related filtering your ears rely on in the real world —
+          a flat stereo track begins to feel like it exists in the room with you.
+        </p>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">I</span>
+            <div class="step-body">
+              <h3>Wear headphones</h3>
+              <p>The spatial illusion is built on binaural cues — subtle timing and tone differences between your two ears. Speakers blur them; headphones preserve them perfectly.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">II</span>
+            <div class="step-body">
+              <h3>Import a track</h3>
+              <p>Drop any audio file into the studio. Decoding happens locally in your browser — your music never leaves your device. Vocals and melodic instruments respond most vividly to motion.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">III</span>
+            <div class="step-body">
+              <h3>Shape the motion</h3>
+              <p>Choose a path and let the sound travel on its own, or switch to manual and place it precisely — behind your shoulder, high above, close to one ear. Distance and elevation refine the feeling of space.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">IV</span>
+            <div class="step-body">
+              <h3>Read the globe</h3>
+              <p>The sphere of points around the listener is a map of space itself. The constellation glows brightest exactly where the sound currently lives, and the golden orb traces its journey.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">V</span>
+            <div class="step-body">
+              <h3>Export your render</h3>
+              <p>When the motion feels right, render the entire track offline at full quality. The result is a standard stereo WAV that carries the full 8D effect on any player, anywhere.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="guide-cta">
+          <a href="#studio" data-nav="studio" class="btn btn-gold btn-lg">
+            Begin in the Studio
+            <svg class="btn-ico"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

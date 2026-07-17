@@ -1,469 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sahukari Praveen — Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahukari Praveen — Software &amp; ML Engineer</title>
+<meta name="description" content="Sahukari Praveen — Software and Machine Learning Engineer. 2x Kaggle Silver Medalist. B.Tech CS, VIT Chennai, Aug 2026. Builds agents that plan ahead.">
+<meta property="og:title" content="Sahukari Praveen — Software &amp; ML Engineer">
+<meta property="og:description" content="A field notebook that simulates. 2x Kaggle Silver Medalist — the portfolio doesn't describe the work, it executes it.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F4EE'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%2316181D' stroke-width='1'/%3E%3Ccircle cx='25' cy='11' r='3.5' fill='%23E0531F'/%3E%3C/svg%3E">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F4EE">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15171C">
+<script>document.documentElement.classList.add('js');</script>
+<script src="theme.js"></script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- LOADER -->
-  <div id="loader">
-    <div class="loader-inner">
-      <div class="loader-logo">wait for my portfolio to load :)</div>
-      <div class="loader-bar">
-        <div class="loader-progress" id="loaderProgress"></div>
-      </div>
-      <div class="loader-text">Initializing...</div>
-    </div>
+<a class="skip-link" href="#operator">Skip to content</a>
+
+<button id="theme-toggle" class="theme-toggle" aria-label="Switch theme">
+  <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.5A8.5 8.5 0 0 1 9.5 3.6a8.5 8.5 0 1 0 10.9 10.9z"/></svg>
+  <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+</button>
+
+<!-- ============ FIG. 0 — HERO ============ -->
+<section class="hero" id="fig0" aria-label="Introduction">
+  <canvas id="hero-canvas" aria-label="Live simulation of an orbital-intercept planning agent: a spacecraft draws its dashed flight plan before flying it, re-planning when you disturb the system with your cursor." role="img"></canvas>
+
+  <div class="hero-figtag mono" aria-hidden="true">FIG. 0 — LIVE SIMULATION · t=<span data-tick>0</span></div>
+
+  <div class="hero-overlay">
+    <p class="hero-kicker mono">SAHUKARI PRAVEEN · SOFTWARE / ML ENGINEER · FIELD NOTEBOOK, 2026 EDITION</p>
+    <h1 class="hero-name">
+      <span class="mask"><span class="mask-inner">I build agents</span></span>
+      <span class="mask"><span class="mask-inner">that plan ahead.</span></span>
+    </h1>
+    <p class="hero-sub">Twice a Kaggle Silver Medalist — top <span class="mono num">3–4%</span> in fields of <span class="mono num">3,000–4,700</span> teams. From model design to <span class="mono num">int8</span> quantization to containerized deployment, end to end.</p>
+    <nav class="hero-links mono" aria-label="Primary links">
+      <a href="https://github.com/soy-praveen" target="_blank" rel="noopener">GITHUB<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="https://www.kaggle.com/praveensahukari" target="_blank" rel="noopener">KAGGLE<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="https://www.linkedin.com/in/soy-praveen/" target="_blank" rel="noopener">LINKEDIN<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </nav>
+    <a class="hero-jump mono" href="#operator">01 · OPERATOR<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v13m-6-6l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 
-  <!-- PARTICLES -->
-  <div id="particles"></div>
+  <p class="hero-legend mono">Fig. 0 — depth-2 expectimax agent solving intercepts over an 18-turn horizon. The planning loop from Orbit Wars (rank <span class="num">175/4,729</span>), re-implemented in vanilla JS. Move your cursor to perturb gravity — <a class="legend-link" href="orbit-wars/">or play a full game against it</a>.</p>
+</section>
 
-  <!-- NAVBAR -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <a class="nav-logo" href="#hero">My Space!<span class="dot"></span></a>
-      <ul class="nav-links-list">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#certifications" class="nav-link">Certs</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+<main>
+
+<!-- ============ 01 / OPERATOR ============ -->
+<section class="sec" id="operator" aria-labelledby="operator-h" tabindex="-1">
+  <header class="sec-head">
+    <p class="sec-no mono">01 / OPERATOR</p>
+    <h2 class="sec-title" id="operator-h"><span class="mask"><span class="mask-inner">Engineering, graded like a competition.</span></span></h2>
+  </header>
+
+  <div class="operator-grid" data-rise data-stagger>
+    <aside class="marginalia mono" aria-label="Operator record">
+      <div class="marg-row"><span class="marg-k">LOCATION</span><span class="marg-v">CHENNAI, IN</span></div>
+      <div class="marg-row"><span class="marg-k">DEGREE</span><span class="marg-v">B.TECH CS · VIT CHENNAI</span></div>
+      <div class="marg-row"><span class="marg-k">AVAILABLE</span><span class="marg-v">AUG 2026</span></div>
+      <div class="marg-row"><span class="marg-k">TARGET</span><span class="marg-v">SWE / ML ENGINEER</span></div>
+      <div class="marg-row"><span class="marg-k">STACK</span><span class="marg-v">PYTORCH · ONNX · DOCKER · K8S</span></div>
+      <svg class="sp-glyph" viewBox="0 0 120 120" aria-label="Monogram: orbital glyph for S.P." role="img">
+        <circle cx="60" cy="60" r="44" fill="none" stroke="var(--hairline)" stroke-width="1"/>
+        <circle cx="60" cy="60" r="27" fill="none" stroke="var(--hairline)" stroke-width="1"/>
+        <path class="plot" d="M60 16 A44 44 0 0 1 104 60" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+        <path class="plot" d="M33 60 A27 27 0 0 1 87 60" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+        <circle cx="60" cy="60" r="3" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+        <circle cx="104" cy="60" r="4" fill="var(--accent)"/>
+        <text x="60" y="103" text-anchor="middle" class="glyph-label">S.P.</text>
+      </svg>
+    </aside>
+
+    <div class="operator-prose">
+      <p>I'm Praveen — a computer-science undergraduate who likes his engineering graded the way competitions grade it: fixed constraints, measured outcomes, no partial credit. In the last year that approach earned two Kaggle Silver medals, placing in the top <span class="mono num">3–4%</span> of international AI/ML fields of <span class="mono num">3,000</span>–<span class="mono num">4,700</span> teams.</p>
+      <p>My work covers the full life of a machine-learning system: model design and training in PyTorch, compression to ONNX at int8, REST deployment in Docker and Kubernetes, and the CI/CD that keeps all of it repeatable. I care about the difference between a model that scores well and a system that ships.</p>
+      <p>This page is built the same way — budgeted, measured, verifiable. The simulation above runs the planning loop from my silver-medal agent. The neural network in experiment <a class="xref mono" href="#exp-002">002</a> is a real one, executing in your browser right now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 / EXPERIMENTS ============ -->
+<section class="sec" id="experiments" aria-labelledby="experiments-h">
+  <header class="sec-head">
+    <p class="sec-no mono">02 / EXPERIMENTS</p>
+    <h2 class="sec-title" id="experiments-h"><span class="mask"><span class="mask-inner">Proof over promises.</span></span></h2>
+  </header>
+
+  <!-- EXP-001 -->
+  <article class="plate exp" id="exp-001" data-rise>
+    <header class="exp-bar mono">
+      <span class="exp-id">EXP-001</span>
+      <h3 class="exp-name">ORBIT WARS — GAME AI AGENT</h3>
+      <span class="exp-result"><span class="accent-dot" aria-hidden="true"></span>SILVER · 175/4,729 · SOLO</span>
+      <span class="exp-links">
+        <a href="orbit-wars/" class="go">PLAY THE AGENT<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://www.kaggle.com/competitions/orbit-wars" target="_blank" rel="noopener">COMPETITION<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </span>
+    </header>
+    <div class="exp-body">
+      <div class="exp-fig">
+        <canvas id="exp1-canvas" aria-label="Miniature orbital simulation: the agent repeatedly plots a dashed intercept course to a moving planet, then flies it." role="img"></canvas>
+        <p class="figcap mono">Fig. 1 — one intercept solve, looping. Same math as Fig. 0.</p>
+      </div>
+      <div class="exp-prose">
+        <p class="exp-lede">A fully vectorized PyTorch planning agent — <span class="mono num">~5,500</span> LOC across <span class="mono num">15</span> modules — that played thousands of live 500-turn adversarial ladder games inside a hard per-turn compute budget.</p>
+        <ul class="exp-points">
+          <li>Built an orbital trajectory-prediction engine that forward-simulates planet motion over an 18-turn horizon and solves intercept angles against planets rotating around a central sun.</li>
+          <li>Paired it with an ETA-aware reinforcement-risk model that declines captures the opponent could reinforce mid-flight.</li>
+          <li>Depth-2 expectimax<button class="fn-ref mono" aria-expanded="false" aria-controls="fn-1">1</button> with softmax opponent modeling for 1v1; a separately tuned game-theoretic policy for 4-player free-for-all.</li>
+          <li>Prototyped behavioural-cloning and reinforcement-learning agents, benchmarked all three head-to-head on the ladder, and shipped the strongest.</li>
+        </ul>
+        <aside class="margin-note mono" id="fn-1" role="note"><span class="fn-no">1</span> WHY DEPTH-2 — with dozens of candidate attack waves per turn and an 18-turn horizon, depth-2 expectimax was the deepest search that fit the per-turn budget. Deeper trees lost more to timeouts than they gained in foresight.</aside>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP-002 -->
+  <article class="plate exp exp-flip" id="exp-002" data-rise>
+    <header class="exp-bar mono">
+      <span class="exp-id">EXP-002</span>
+      <h3 class="exp-name">NEUROGOLF 2026 — MINIMAL NETS FOR ARC-AGI</h3>
+      <span class="exp-result"><span class="accent-dot" aria-hidden="true"></span>SILVER · 79/3,061 · IJCAI-ECAI</span>
+      <span class="exp-links">
+        <a href="neurogolf/" class="go">EXPLORE THE 400<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://www.kaggle.com/competitions/neurogolf-2026" target="_blank" rel="noopener">COMPETITION<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </span>
+    </header>
+    <div class="exp-body">
+      <div class="exp-fig">
+        <div class="mlp-demo" id="mlp-demo">
+          <div class="mlp-grids">
+            <div class="mlp-grid-wrap">
+              <p class="mlp-grid-label mono">INPUT — CLICK CELLS</p>
+              <div class="mlp-grid" id="mlp-in" role="group" aria-label="3 by 3 input grid. Toggle cells to run the network."></div>
+            </div>
+            <svg class="mlp-net" id="mlp-net" viewBox="0 0 300 216" aria-label="The complete two-layer network: nine inputs, three hidden units summing each column, nine outputs. Orange edges are positive weights; teal markers are negative biases." role="img"></svg>
+            <div class="mlp-grid-wrap">
+              <p class="mlp-grid-label mono">OUTPUT — GRAVITY</p>
+              <div class="mlp-grid mlp-grid-out" id="mlp-out" aria-live="polite" aria-label="Network output grid"></div>
+            </div>
+          </div>
+          <p class="mlp-readout mono" id="mlp-readout">PARAMS: 24 · LAYERS: 2 · LAST INFERENCE: —</p>
+        </div>
+        <p class="figcap mono">Fig. 2 — ENTIRE NETWORK SHOWN. NOT A SIMPLIFICATION.</p>
+      </div>
+      <div class="exp-prose">
+        <p class="exp-lede">Engineered <span class="mono num">400</span> task-specific ONNX networks that reproduce ARC-AGI image transformations under a strict size-and-parameter budget — scoring <span class="mono num">7,515/10,000</span>.</p>
+        <ul class="exp-points">
+          <li>Compressed each model to a median of <span class="mono num">~100</span> parameters — 120 of them single-layer — using int8 quantization<button class="fn-ref mono" aria-expanded="false" aria-controls="fn-2">2</button> and hand-optimized computation graphs.</li>
+          <li>Preserved exact output correctness on held-out grids while jointly minimizing parameter count and byte footprint.</li>
+          <li>Iterated across <span class="mono num">1,100+</span> evaluated submissions to tune the complexity-vs-correctness trade-off.</li>
+          <li>The figure follows the same discipline: a pruned two-layer net that applies gravity to a 3×3 grid. Every toggle is a real forward pass.</li>
+        </ul>
+        <aside class="margin-note mono" id="fn-2" role="note"><span class="fn-no">2</span> THE METRIC — score = max(1, 25 − ln(cost)), cost = parameters + byte footprint. Every extra weight is a logarithmic penalty, so quantization and graph pruning beat accuracy tricks.</aside>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP-003 -->
+  <article class="plate exp" id="exp-003" data-rise>
+    <header class="exp-bar mono">
+      <span class="exp-id">EXP-003</span>
+      <h3 class="exp-name">3D RECONSTRUCTION FROM A SINGLE PANORAMA</h3>
+      <span class="exp-result"><span class="accent-dot" aria-hidden="true"></span>91% SEG. ACCURACY</span>
+      <span class="exp-links">
+        <a href="atrium/" class="go">FIELD SHEET<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://github.com/soy-praveen" target="_blank" rel="noopener">CODE<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </span>
+    </header>
+    <div class="exp-body">
+      <div class="exp-fig">
+        <svg class="cubemap" id="cubemap" viewBox="0 0 340 260" aria-label="Diagram: an equirectangular panorama strip unfolds into the six faces of a cube map cross." role="img">
+          <g class="cm-strip">
+            <rect x="30" y="18" width="280" height="46" fill="none" stroke="var(--ink)" stroke-width="1.2"/>
+            <path class="plot" d="M30 50 Q 65 34 100 46 T 170 42 T 240 48 T 310 40" fill="none" stroke="var(--ink-muted)" stroke-width="1"/>
+            <text x="30" y="12" class="fig-label">EQUIRECTANGULAR 360°</text>
+          </g>
+          <g class="cm-faces" id="cm-faces">
+            <g class="cm-face" style="--sx:30px; --sy:19px; --fx:100px; --fy:96px"><rect width="44" height="44" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="22" y="27" class="fig-label cm-txt">+Y</text></g>
+            <g class="cm-face" style="--sx:77px; --sy:19px; --fx:52px;  --fy:144px"><rect width="44" height="44" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="22" y="27" class="fig-label cm-txt">−X</text></g>
+            <g class="cm-face" style="--sx:124px; --sy:19px; --fx:100px; --fy:144px"><rect width="44" height="44" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="22" y="27" class="fig-label cm-txt">+Z</text></g>
+            <g class="cm-face" style="--sx:172px; --sy:19px; --fx:148px; --fy:144px"><rect width="44" height="44" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="22" y="27" class="fig-label cm-txt">+X</text></g>
+            <g class="cm-face" style="--sx:219px; --sy:19px; --fx:196px; --fy:144px"><rect width="44" height="44" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="22" y="27" class="fig-label cm-txt">−Z</text></g>
+            <g class="cm-face" style="--sx:266px; --sy:19px; --fx:100px; --fy:192px"><rect width="44" height="44" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="22" y="27" class="fig-label cm-txt">−Y</text></g>
+          </g>
+          <text x="252" y="170" class="fig-label">CUBE-MAP CROSS</text>
+          <path class="plot" d="M170 68 Q 170 84 146 93" fill="none" stroke="var(--accent)" stroke-width="1.3" stroke-dasharray="4 4"/>
+        </svg>
+        <p class="figcap mono">Fig. 3 — equirectangular → cube-map projection, then 2D detections lifted to 3D by depth.</p>
+      </div>
+      <div class="exp-prose">
+        <p class="exp-lede">An end-to-end 3D scene-reconstruction pipeline from a single 360° panorama — monocular depth estimation, object detection, and segmentation, orchestrated into one pass.</p>
+        <ul class="exp-points">
+          <li>Reached <span class="mono num">91%</span> segmentation accuracy across indoor and outdoor scenes.</li>
+          <li>Converted equirectangular panoramas to cube-map projections and lifted 2D detections into 3D with depth models — <span class="mono num">23%</span> lower depth-estimation error than off-the-shelf baselines.</li>
+          <li>Fully terminal-driven and reproducible: arbitrary input panoramas, no manual intervention between stages, under <span class="mono num">90</span> seconds per scene on standard GPU hardware.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP-004 -->
+  <article class="plate exp exp-flip" id="exp-004" data-rise>
+    <header class="exp-bar mono">
+      <span class="exp-id">EXP-004</span>
+      <h3 class="exp-name">DECENTRALIZED FREELANCE MARKETPLACE — SKILL NFTS</h3>
+      <span class="exp-result"><span class="accent-dot" aria-hidden="true"></span>0 FAILED TXNS · 3+ TESTNETS</span>
+      <span class="exp-links">
+        <a href="sovereign/" class="go">FIELD SHEET<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://github.com/soy-praveen" target="_blank" rel="noopener">CODE<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </span>
+    </header>
+    <div class="exp-body">
+      <div class="exp-fig">
+        <div class="escrow-fig" id="escrow-fig">
+          <svg viewBox="0 0 340 150" aria-label="Diagram: a milestone escrow timeline that releases funds step by step, and a soulbound identity token that refuses to leave its owner." role="img">
+            <line x1="24" y1="60" x2="316" y2="60" stroke="var(--hairline)" stroke-width="1.2"/>
+            <line class="esc-progress plot" x1="24" y1="60" x2="316" y2="60" stroke="var(--ink)" stroke-width="1.4"/>
+            <g class="esc-node" style="--d:0ms"><circle cx="24" cy="60" r="6" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.4"/><text x="24" y="86" class="fig-label" text-anchor="middle">FUND</text></g>
+            <g class="esc-node" style="--d:220ms"><circle cx="121" cy="60" r="6" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.4"/><text x="121" y="86" class="fig-label" text-anchor="middle">M1 PAID</text></g>
+            <g class="esc-node" style="--d:440ms"><circle cx="218" cy="60" r="6" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.4"/><text x="218" y="86" class="fig-label" text-anchor="middle">M2 PAID</text></g>
+            <g class="esc-node esc-final" style="--d:660ms"><circle cx="316" cy="60" r="6" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.4"/><text x="316" y="86" class="fig-label" text-anchor="middle">RELEASE</text></g>
+            <text x="24" y="30" class="fig-label">MILESTONE ESCROW — AUTO-RELEASE ON PROOF</text>
+          </svg>
+          <div class="sbt-row">
+            <div class="sbt-seal" id="sbt-seal" title="Soulbound — non-transferable" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span class="mono">SBT-0x01</span>
+            </div>
+            <p class="sbt-note mono">SOULBOUND IDENTITY — TRY DRAGGING IT. IT WON'T LEAVE.</p>
+          </div>
+        </div>
+        <p class="figcap mono">Fig. 4 — escrow releases on proof; identity refuses to transfer. Sybil vectors closed.</p>
+      </div>
+      <div class="exp-prose">
+        <p class="exp-lede">A full-stack, multichain freelance platform where reputation is earned on-chain — EVM wallet auth, Soulbound identity NFTs, and Skill NFTs issued after proof-of-work validation.</p>
+        <ul class="exp-points">
+          <li>Blocked duplicate and fake-profile creation in adversarial testing, closing common Sybil attack vectors.</li>
+          <li>DAO-based governance and milestone-based escrow contracts auto-released funds on verified completion across <span class="mono num">3+</span> EVM-compatible testnets with <span class="mono num">0</span> failed transactions in end-to-end testing.</li>
+          <li>Dockerized and deployed the full stack — credentials, DAO votes, and transactions on-chain — with cross-chain reputation portability at <span class="mono num">sub-3s</span> average confirmation.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- EXP-005 -->
+  <article class="plate exp" id="exp-005" data-rise>
+    <header class="exp-bar mono">
+      <span class="exp-id">EXP-005</span>
+      <h3 class="exp-name">RESUME PARSING &amp; JOB RECOMMENDATION</h3>
+      <span class="exp-result"><span class="accent-dot" aria-hidden="true"></span>94% EXTRACTION ACC.</span>
+      <span class="exp-links">
+        <a href="laurel/" class="go">FIELD SHEET<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://github.com/soy-praveen" target="_blank" rel="noopener">CODE<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </span>
+    </header>
+    <div class="exp-body">
+      <div class="exp-fig">
+        <div class="parser-fig" id="parser-fig">
+          <p class="parser-head mono">INPUT: RESUME.PDF → TOKENS</p>
+          <p class="parser-text">Built a distributed inference service in <span class="tok">Python</span>, containerized with <span class="tok">Docker</span> and orchestrated on <span class="tok">Kubernetes</span>; fine-tuned <span class="tok">BERT</span> for entity extraction and served scoring through cached <span class="tok">REST</span> endpoints.</p>
+          <p class="parser-readout mono">SKILLS EXTRACTED: <span id="parser-count" class="num">5</span>/5 · MODEL CONF: <span class="num" data-count="94" data-suffix="%">94%</span></p>
+        </div>
+        <p class="figcap mono">Fig. 5 — BERT-style span tagging over a live paragraph.</p>
+      </div>
+      <div class="exp-prose">
+        <p class="exp-lede">A resume-parsing and job-matching system built on BERT fine-tuning — <span class="mono num">94%</span> skill-extraction accuracy, benchmarked across <span class="mono num">5+</span> training configurations.</p>
+        <ul class="exp-points">
+          <li>Improved recommendation precision by <span class="mono num">18%</span> over a TF-IDF baseline.</li>
+          <li>Containerized a dual-interface web app with Docker and exposed inference via REST APIs; cut median latency <span class="mono num">40%</span> with batched scoring and caching.</li>
+          <li>Automated bulk ingestion and candidate ranking — <span class="mono num">500+</span> resumes processed end-to-end, manual screening time down <span class="mono num">70%</span>.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ANNEX -->
+  <article class="plate exp annex" data-rise>
+    <header class="exp-bar mono">
+      <span class="exp-id">ANNEX</span>
+      <span class="exp-name">FURTHER INSTRUMENTS</span>
+    </header>
+    <div class="annex-body">
+      <div class="annex-row">
+        <div>
+          <p class="annex-title">AURAL — an 8D-audio instrument</p>
+          <p class="annex-sub">Web Audio HRTF panner orbiting your track around your head, visualized on a Three.js globe. Bring headphones. Runs live on this site.</p>
+        </div>
+        <a class="annex-link mono" href="aural/">OPEN THE INSTRUMENT<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="annex-row">
+        <div>
+          <p class="annex-title">IMAGE &rarr; 3D — a mesh foundry</p>
+          <p class="annex-sub">Kaggle-GPU pipeline that turns single images into decimated, web-ready GLB meshes — the tooling behind the 3D work in this notebook.</p>
+        </div>
+        <a class="annex-link mono" href="https://github.com/soy-praveen" target="_blank" rel="noopener">CODE<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ============ 03 / INSTRUMENTATION ============ -->
+<section class="sec" id="instrumentation" aria-labelledby="instrumentation-h">
+  <header class="sec-head">
+    <p class="sec-no mono">03 / INSTRUMENTATION</p>
+    <h2 class="sec-title" id="instrumentation-h"><span class="mask"><span class="mask-inner">Instruments, with citations.</span></span></h2>
+  </header>
+
+  <p class="sec-note">Every claimed skill cites the experiment that proves it. Skills without project proof are filed honestly under general references.</p>
+
+  <figure class="pipeline" data-rise aria-label="Deployment pipeline: PyTorch to ONNX to int8 quantization to Docker to Kubernetes to REST">
+    <svg viewBox="0 0 920 70" preserveAspectRatio="xMidYMid meet">
+      <line class="plot" x1="88" y1="32" x2="182" y2="32" stroke="var(--hairline)" stroke-width="1.4"/>
+      <line class="plot" x1="256" y1="32" x2="350" y2="32" stroke="var(--hairline)" stroke-width="1.4"/>
+      <line class="plot" x1="428" y1="32" x2="522" y2="32" stroke="var(--hairline)" stroke-width="1.4"/>
+      <line class="plot" x1="600" y1="32" x2="694" y2="32" stroke="var(--hairline)" stroke-width="1.4"/>
+      <line class="plot" x1="762" y1="32" x2="856" y2="32" stroke="var(--hairline)" stroke-width="1.4"/>
+      <g class="pipe-node"><rect x="12" y="16" width="76" height="32" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="50" y="36" text-anchor="middle" class="fig-label">PYTORCH</text></g>
+      <g class="pipe-node"><rect x="182" y="16" width="74" height="32" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="219" y="36" text-anchor="middle" class="fig-label">ONNX</text></g>
+      <g class="pipe-node"><rect x="350" y="16" width="78" height="32" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="389" y="36" text-anchor="middle" class="fig-label">INT8</text></g>
+      <g class="pipe-node"><rect x="522" y="16" width="78" height="32" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="561" y="36" text-anchor="middle" class="fig-label">DOCKER</text></g>
+      <g class="pipe-node"><rect x="694" y="16" width="68" height="32" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="728" y="36" text-anchor="middle" class="fig-label">K8S</text></g>
+      <g class="pipe-node"><rect x="856" y="16" width="56" height="32" fill="var(--plate)" stroke="var(--accent)" stroke-width="1.4"/><text x="884" y="36" text-anchor="middle" class="fig-label">REST</text></g>
+    </svg>
+    <figcaption class="figcap mono">Fig. 6 — the pipeline this notebook keeps citing. Model → artifact → deployment.</figcaption>
+  </figure>
+
+  <div class="stations" data-rise data-stagger>
+    <div class="station">
+      <h3 class="station-h mono">LANGUAGES</h3>
+      <ul class="skill-list">
+        <li><button class="skill" data-note="Python — 5,500-LOC planning agent, BERT services, 3D pipeline">Python</button></li>
+        <li><button class="skill" data-note="JavaScript — this page: the sim in Fig. 0 is ~400 lines of vanilla JS">JavaScript</button></li>
+        <li><button class="skill" data-note="SQL — relational modeling, DP-900 certified">SQL</button></li>
+        <li><button class="skill" data-note="Solidity — escrow + governance contracts across 3 testnets">Solidity</button></li>
       </ul>
-      <div class="nav-actions">
-        <button id="themeToggle" class="theme-btn" title="Toggle Neo-Brutalism">
-          <i class="fas fa-cube"></i>
-        </button>
-        <a href="my-resume.pdf" download class="btn btn-sm">Resume <i class="fas fa-download"></i></a>
-        <button id="navToggle" class="hamburger">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <p class="station-cite mono">PROVEN IN: <a href="#exp-001">001</a> <a href="#exp-002">002</a> <a href="#exp-003">003</a> <a href="#exp-004">004</a> <a href="#exp-005">005</a></p>
+      <p class="station-note mono" aria-live="polite"></p>
     </div>
-  </nav>
+    <div class="station">
+      <h3 class="station-h mono">MACHINE LEARNING</h3>
+      <ul class="skill-list">
+        <li><button class="skill" data-note="PyTorch — vectorized planning agent; depth + segmentation models">PyTorch</button></li>
+        <li><button class="skill" data-note="ONNX + int8 — 400 quantized networks, median ~100 params">ONNX / int8</button></li>
+        <li><button class="skill" data-note="BERT — fine-tuned span extraction at 94% accuracy">BERT</button></li>
+        <li><button class="skill" data-note="Search — depth-2 expectimax, softmax opponent modeling">Expectimax / Game AI</button></li>
+        <li><button class="skill" data-note="Vision — monocular depth, detection, segmentation from panoramas">Depth / Segmentation</button></li>
+      </ul>
+      <p class="station-cite mono">PROVEN IN: <a href="#exp-001">001</a> <a href="#exp-002">002</a> <a href="#exp-003">003</a> <a href="#exp-005">005</a></p>
+      <p class="station-note mono" aria-live="polite"></p>
+    </div>
+    <div class="station">
+      <h3 class="station-h mono">BACKEND &amp; WEB</h3>
+      <ul class="skill-list">
+        <li><button class="skill" data-note="REST — model inference served behind versioned endpoints">REST APIs</button></li>
+        <li><button class="skill" data-note="React — marketplace frontend with EVM wallet auth">React</button></li>
+        <li><button class="skill" data-note="Microservices — dual-interface app split into scoring + ingestion">Microservices</button></li>
+        <li><button class="skill" data-note="Web3 — wallet auth, on-chain storage, DAO voting">Web3</button></li>
+      </ul>
+      <p class="station-cite mono">PROVEN IN: <a href="#exp-004">004</a> <a href="#exp-005">005</a></p>
+      <p class="station-note mono" aria-live="polite"></p>
+    </div>
+    <div class="station">
+      <h3 class="station-h mono">SYSTEMS &amp; DEVOPS</h3>
+      <ul class="skill-list">
+        <li><button class="skill" data-note="Docker — every deployed project on this page ships in a container">Docker</button></li>
+        <li><button class="skill" data-note="Kubernetes — IBM DevOps Practitioner, see calibration 05">Kubernetes</button></li>
+        <li><button class="skill" data-note="Linux — terminal-driven reproducible pipelines, POSIX">Linux</button></li>
+        <li><button class="skill" data-note="CI/CD — pipeline design with Git + Jenkins, certified">CI/CD</button></li>
+      </ul>
+      <p class="station-cite mono">PROVEN IN: <a href="#exp-003">003</a> <a href="#exp-004">004</a> <a href="#exp-005">005</a> · <a href="#calibration">CAL-01</a></p>
+      <p class="station-note mono" aria-live="polite"></p>
+    </div>
+    <div class="station station-general">
+      <h3 class="station-h mono">GENERAL REFERENCES</h3>
+      <p class="station-sub">Working knowledge, no headline project yet — filed without inflated claims.</p>
+      <ul class="skill-list skill-list-plain mono">
+        <li>DSA · OOP · System Design — </li>
+        <li>Distributed Systems — </li>
+        <li>Java · C / C++ — </li>
+        <li>TensorFlow · Scikit-learn — </li>
+        <li>Jenkins · Ansible · Terraform — </li>
+        <li>Grafana · Azure — <a class="xref" href="#calibration">CAL-02</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <!-- MOBILE MENU -->
-  <div id="mobileMenu">
-    <ul>
-      <li><a href="#about" class="mobile-link">About</a></li>
-      <li><a href="#projects" class="mobile-link">Projects</a></li>
-      <li><a href="#skills" class="mobile-link">Skills</a></li>
-      <li><a href="#certifications" class="mobile-link">Certs</a></li>
-      <li><a href="#contact" class="mobile-link">Contact</a></li>
-    </ul>
+<!-- ============ 04 / RESULTS ============ -->
+<section class="sec" id="results" aria-labelledby="results-h">
+  <header class="sec-head">
+    <p class="sec-no mono">04 / RESULTS</p>
+    <h2 class="sec-title" id="results-h"><span class="mask"><span class="mask-inner">Where the medals actually sit.</span></span></h2>
+  </header>
+
+  <p class="sec-note">Each dot below is one competing team, drawn to scale. Both fields are international AI/ML competitions; both medals are official Kaggle Silver.</p>
+
+  <div class="plate rank-plate" data-rise>
+    <div class="rank-head mono">
+      <span>ORBIT WARS — <span class="num">4,729</span> TEAMS</span>
+      <span class="rank-stat">RANK <span class="num" data-count="175">175</span> / 4,729 · SOLO · TOP 3.7%</span>
+    </div>
+    <div class="rank-fig" id="rank-1" data-n="4729" data-rank="175" data-label="HERE — TOP 3.7%">
+      <canvas aria-label="A field of 4,729 dots, one per team. The single orange dot near the start marks rank 175." role="img"></canvas>
+      <span class="rank-callout mono" aria-hidden="true"></span>
+    </div>
   </div>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-content">
-      <div class="hero-badge reveal">
-        <span class="badge-dot"></span> Open to Opportunities
-      </div>
-      <h1 class="hero-title reveal">
-        Sahukari<br /><span class="gradient-text">Praveen</span>
-      </h1>
-      <p class="hero-subtitle reveal">
-        CS Student @ VIT Chennai · AI/ML · DevOps · Web3 · Full-Stack
-      </p>
-      <p class="hero-desc reveal">
-        Building intelligent, scalable systems - from LLM-powered APIs and decentralized platforms
-        to 3D reconstruction pipelines. I turn complex problems into elegant software.
-      </p>
-      <div class="hero-cta reveal">
-        <a href="#projects" class="btn btn-primary">View Projects <i class="fas fa-arrow-right"></i></a>
-        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-      </div>
-      <div class="hero-stats reveal">
-        <div class="stat">
-          <span class="stat-number" data-target="3">0</span>
-          <span class="stat-label">Major Projects</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number" data-target="2">0</span>
-          <span class="stat-label">Certifications</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number" data-target="10">0</span>
-          <span class="stat-label">Tech Stacks</span>
-        </div>
-      </div>
+  <div class="plate rank-plate" data-rise>
+    <div class="rank-head mono">
+      <span>NEUROGOLF · IJCAI-ECAI 2026 — <span class="num">3,061</span> TEAMS</span>
+      <span class="rank-stat">RANK <span class="num" data-count="79">79</span> / 3,061 · TOP 2.6%</span>
     </div>
-    <div class="hero-visual reveal">
-      <div class="code-card">
-        <div class="code-header">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="code-filename">praveen.py</span>
-        </div>
-        <pre class="code-body"><code><span class="kw">class</span> <span class="fn">Praveen</span>:
-  <span class="kw">def</span> <span class="fn">__init__</span>(self):
-    self.role   = <span class="str">"CS Student"</span>
-    self.uni    = <span class="str">"VIT Chennai"</span>
-    self.focus  = [
-      <span class="str">"AI / ML"</span>,
-      <span class="str">"DevOps"</span>,
-      <span class="str">"Web3"</span>,
-      <span class="str">"Full-Stack"</span>,
-    ]
-    self.status = <span class="str">"Open to work"</span>
-
-  <span class="kw">def</span> <span class="fn">contact</span>(self):
-    <span class="kw">return</span> <span class="str">"phixbugs@gmail.com"</span></code></pre>
-      </div>
+    <div class="rank-fig" id="rank-2" data-n="3061" data-rank="79" data-label="HERE — TOP 2.6%">
+      <canvas aria-label="A field of 3,061 dots, one per team. The single orange dot near the start marks rank 79." role="img"></canvas>
+      <span class="rank-callout mono" aria-hidden="true"></span>
     </div>
-  </section>
+  </div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Who I Am</span>
-        <h2>About Me</h2>
+  <p class="rank-foot mono">OFFICIAL KAGGLE CERTIFICATES AVAILABLE ON REQUEST.</p>
+</section>
+
+<!-- ============ 05 / CALIBRATION ============ -->
+<section class="sec" id="calibration" aria-labelledby="calibration-h">
+  <header class="sec-head">
+    <p class="sec-no mono">05 / CALIBRATION</p>
+    <h2 class="sec-title" id="calibration-h"><span class="mask"><span class="mask-inner">Calibration records.</span></span></h2>
+  </header>
+
+  <div class="plate ledger" data-rise data-stagger>
+    <div class="ledger-row" id="cal-01">
+      <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="29" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <circle cx="32" cy="32" r="21" fill="none" stroke="var(--hairline)" stroke-width="1"/>
+        <text x="32" y="36" text-anchor="middle" class="seal-txt">CAL-01</text>
+      </svg>
+      <div class="ledger-main">
+        <p class="ledger-title">IBM Certified — DevOps Practitioner</p>
+        <p class="ledger-sub">CI/CD pipeline design, Docker containerization, automated cloud deployment. Git · Jenkins · Docker · Kubernetes.</p>
       </div>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p>I'm a final-year Computer Science student at <strong>VIT Chennai</strong>, graduating in August 2026.
-          My passion lies at the intersection of <strong>AI/ML</strong>, <strong>distributed systems</strong>,
-          and <strong>developer tooling</strong> — building things that are not just functional, but thoughtfully engineered.</p>
-          <p>I've worked on LLM fine-tuning with BERT, decentralized smart contract systems on EVM chains,
-          and automated deep learning pipelines for 3D reconstruction — all the way from research to containerized production deployment.</p>
-          <p>When I'm not coding, I explore blockchain protocols, contribute to open-source, and geek out on systems architecture.
-          I'm actively seeking <strong>full-time roles or internships</strong> starting mid-2026.</p>
-          <div class="about-links">
-            <a href="mailto:phixbugs@gmail.com" class="about-link"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://www.linkedin.com/in/soy-praveen/" target="_blank" class="about-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/soy-praveen" target="_blank" class="about-link"><i class="fab fa-github"></i> GitHub</a>
-          </div>
-        </div>
-        <div class="about-cards reveal">
-          <div class="info-card">
-            <i class="fas fa-graduation-cap"></i>
-            <div>
-              <strong>B.Tech — Computer Science</strong>
-              <span>Vellore Institute of Technology · 2022–2026</span>
-            </div>
-          </div>
-          <div class="info-card">
-            <i class="fas fa-map-marker-alt"></i>
-            <div>
-              <strong>Location</strong>
-              <span>Chennai, Tamil Nadu, India</span>
-            </div>
-          </div>
-          <div class="info-card">
-            <i class="fas fa-briefcase"></i>
-            <div>
-              <strong>Availability</strong>
-              <span>Open to work · Aug 2026 onward</span>
-            </div>
-          </div>
-          <div class="info-card">
-            <i class="fas fa-code-branch"></i>
-            <div>
-              <strong>Interests</strong>
-              <span>LLMs · DevOps · Blockchain · Systems</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="ledger-meta mono"><span>IBM · ADROIT TECH.</span><span>JUL 2025</span></div>
     </div>
-  </section>
-
-  <!-- TIMELINE / HOW IT WORKS -->
-  <section id="how-it-works">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">My Journey</span>
-        <h2>Timeline</h2>
+    <div class="ledger-row" id="cal-02">
+      <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="29" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <circle cx="32" cy="32" r="21" fill="none" stroke="var(--hairline)" stroke-width="1"/>
+        <text x="32" y="36" text-anchor="middle" class="seal-txt">CAL-02</text>
+      </svg>
+      <div class="ledger-main">
+        <p class="ledger-title">Microsoft Certified — Azure Data Fundamentals (DP-900)</p>
+        <p class="ledger-sub">Relational, non-relational and big-data systems; cloud storage, processing pipelines and visualization on Azure.</p>
       </div>
-      <div class="timeline-wrapper">
-        <div class="timeline-track">
-          <div class="timeline-progress-bar" id="timelineProgress"></div>
-        </div>
-        <div class="timeline-items">
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2022</span>
-              <h3>Joined VIT Chennai</h3>
-              <p>Started B.Tech in Computer Science. Dove deep into DSA, OOP, and systems programming.</p>
-            </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2023</span>
-              <h3>First Major Project</h3>
-              <p>Built a 3D scene reconstruction pipeline from single 360° panoramas using deep learning (PyTorch).</p>
-            </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2024</span>
-              <h3>Web3 & AI Exploration</h3>
-              <p>Built a decentralized freelance marketplace with Soulbound NFTs, DAO governance, and on-chain escrow contracts.</p>
-            </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2025</span>
-              <h3>Certifications + LLM Engineering</h3>
-              <p>IBM DevOps Practitioner + Microsoft Azure DP-900. Built BERT-based resume parsing &amp; job recommendation system.</p>
-            </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-dot active"></div>
-            <div class="timeline-card highlight">
-              <span class="timeline-date">2026</span>
-              <h3>Graduating &amp; Job Ready!</h3>
-              <p>Seeking full-time roles in AI/ML, Backend, or DevOps engineering. Available from August 2026.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="ledger-meta mono"><span>MICROSOFT</span><span>JUL 2025</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">What I've Built</span>
-        <h2>Projects</h2>
-      </div>
-      <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ai">AI / ML</button>
-        <button class="filter-btn" data-filter="web3">Web3</button>
-        <button class="filter-btn" data-filter="devops">DevOps</button>
-        <button class="filter-btn" data-filter="3d">3D / Vision</button>
-      </div>
-      <div class="ext-grid">
-        <div class="ext-card reveal" data-category="ai devops">
-          <div class="ext-card-header">
-            <div class="ext-icon ai-icon"><i class="fas fa-brain"></i></div>
-            <div class="ext-badges"><span class="tag">AI/ML</span><span class="tag">DevOps</span></div>
-          </div>
-          <h3>Resume Parsing &amp; Job Recommendation</h3>
-          <p>BERT-based LLM fine-tuning for high-accuracy skill extraction. Benchmarked across multiple training configs. Dockerized dual-interface web app with automated ML evaluation pipelines and bulk candidate ranking.</p>
-          <div class="ext-stack">
-            <span>Python</span><span>BERT</span><span>PyTorch</span><span>Docker</span><span>REST API</span>
-          </div>
-          <div class="ext-footer">
-            <a href="#" class="btn-link"><i class="fab fa-github"></i> Code</a>
-            <a href="#" class="btn-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-          </div>
-        </div>
-        <div class="ext-card reveal" data-category="web3 devops">
-          <div class="ext-card-header">
-            <div class="ext-icon web3-icon"><i class="fas fa-cubes"></i></div>
-            <div class="ext-badges"><span class="tag">Web3</span><span class="tag">DevOps</span></div>
-          </div>
-          <h3>Decentralized Freelance Marketplace</h3>
-          <p>Multichain platform with EVM wallet auth, Soulbound Identity NFTs, on-chain Skill NFTs with proof-of-work validation, DAO governance for dispute resolution, and milestone-based escrow smart contracts.</p>
-          <div class="ext-stack">
-            <span>Solidity</span><span>React.js</span><span>Web3</span><span>Docker</span>
-          </div>
-          <div class="ext-footer">
-            <a href="#" class="btn-link"><i class="fab fa-github"></i> Code</a>
-            <a href="#" class="btn-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-          </div>
-        </div>
-        <div class="ext-card reveal" data-category="ai 3d">
-          <div class="ext-card-header">
-            <div class="ext-icon vision-icon"><i class="fas fa-cube"></i></div>
-            <div class="ext-badges"><span class="tag">AI/ML</span><span class="tag">3D Vision</span></div>
-          </div>
-          <h3>3D Space Reconstruction from Panorama</h3>
-          <p>End-to-end pipeline from a single 360° panorama using monocular depth estimation, object detection, and segmentation. Converts equirectangular to cube maps and lifts 2D detections into full 3D geometry.</p>
-          <div class="ext-stack">
-            <span>Python</span><span>PyTorch</span><span>Deep Learning</span><span>Linux</span>
-          </div>
-          <div class="ext-footer">
-            <a href="#" class="btn-link"><i class="fab fa-github"></i> Code</a>
-            <a href="#" class="btn-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-          </div>
-        </div>
-      </div>
+<!-- ============ 06 / CHANNEL ============ -->
+<section class="sec" id="channel" aria-labelledby="channel-h">
+  <header class="sec-head">
+    <p class="sec-no mono">06 / CHANNEL</p>
+    <h2 class="sec-title" id="channel-h"><span class="mask"><span class="mask-inner">Open a channel.</span></span></h2>
+  </header>
+
+  <div class="plate channel-plate" data-rise data-stagger>
+    <div class="term mono">
+      <span class="term-line">$ contact --email <a href="mailto:phixbugs@gmail.com" class="term-mail">phixbugs@gmail.com</a></span>
+      <button class="copy-btn mono" id="copy-email" data-email="phixbugs@gmail.com">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span class="copy-label" aria-live="polite">COPY</span>
+      </button>
     </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">What I Know</span>
-        <h2>Tech Stack</h2>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-group reveal">
-          <h4><i class="fas fa-code"></i> Languages</h4>
-          <div class="skill-pills">
-            <span>Python</span><span>Java</span><span>C</span><span>C++</span>
-            <span>JavaScript</span><span>Solidity</span><span>HTML</span><span>CSS</span>
-          </div>
-        </div>
-        <div class="skill-group reveal">
-          <h4><i class="fas fa-brain"></i> AI / ML</h4>
-          <div class="skill-pills">
-            <span>LLMs</span><span>BERT</span><span>PyTorch</span><span>TensorFlow</span>
-            <span>Scikit-learn</span><span>NumPy</span><span>Gen AI</span><span>Model Eval</span>
-          </div>
-        </div>
-        <div class="skill-group reveal">
-          <h4><i class="fas fa-server"></i> Systems &amp; DevOps</h4>
-          <div class="skill-pills">
-            <span>Linux</span><span>Docker</span><span>Kubernetes</span><span>Git</span>
-            <span>Jenkins</span><span>Ansible</span><span>Terraform</span><span>Grafana</span>
-            <span>CI/CD</span><span>SSH</span>
-          </div>
-        </div>
-        <div class="skill-group reveal">
-          <h4><i class="fas fa-globe"></i> Web &amp; Database</h4>
-          <div class="skill-pills">
-            <span>React.js</span><span>REST APIs</span><span>SQL</span><span>NoSQL</span><span>Web3</span>
-          </div>
-        </div>
-        <div class="skill-group reveal">
-          <h4><i class="fas fa-link"></i> Blockchain</h4>
-          <div class="skill-pills">
-            <span>Solidity</span><span>EVM</span><span>Smart Contracts</span><span>NFTs</span><span>DAO</span><span>Web3.js</span>
-          </div>
-        </div>
-        <div class="skill-group reveal">
-          <h4><i class="fas fa-tools"></i> Core CS</h4>
-          <div class="skill-pills">
-            <span>DSA</span><span>OOP</span><span>OS Concepts</span><span>System Design</span>
-          </div>
-        </div>
-      </div>
+    <ul class="channel-links">
+      <li><a href="https://github.com/soy-praveen" target="_blank" rel="noopener">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.72.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+        <span class="mono">GITHUB</span></a></li>
+      <li><a href="https://www.linkedin.com/in/soy-praveen/" target="_blank" rel="noopener">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span class="mono">LINKEDIN</span></a></li>
+      <li><a href="https://www.kaggle.com/praveensahukari" target="_blank" rel="noopener">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v18M7 13l4-4m-4 5.5L15.5 21M17 8l-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="mono">KAGGLE</span></a></li>
+      <li><a href="mailto:phixbugs@gmail.com">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l10 7L22 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="mono">EMAIL</span></a></li>
+    </ul>
+
+    <div class="resume-row">
+      <a class="resume-btn" href="resume.pdf" download="Sahukari-Praveen-Resume.pdf">
+        <span class="resume-fill" aria-hidden="true"></span>
+        <span class="resume-txt mono">DOWNLOAD RESUME — PDF
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5l5 5 5-5M4 21h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+      <p class="resume-alt mono">or just print this page — it's typeset for it.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CERTIFICATIONS -->
-  <section id="certifications">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Credentials</span>
-        <h2>Certifications</h2>
-      </div>
-      <div class="cert-grid">
-        <div class="cert-card reveal">
-          <div class="cert-logo ibm"><i class="fas fa-award"></i></div>
-          <div class="cert-body">
-            <div class="cert-issuer">IBM · Adroit Technologies</div>
-            <h3>IBM Certified: DevOps Practitioner</h3>
-            <p>CI/CD pipeline design, Docker containerization, and automated cloud deployment. Hands-on with Git, Jenkins, Docker, and Kubernetes in production-style infrastructure.</p>
-            <span class="cert-date"><i class="fas fa-calendar"></i> July 2025</span>
-          </div>
-        </div>
-        <div class="cert-card reveal">
-          <div class="cert-logo ms"><i class="fas fa-cloud"></i></div>
-          <div class="cert-body">
-            <div class="cert-issuer">Microsoft</div>
-            <h3>Azure Data Fundamentals (DP-900)</h3>
-            <p>Relational, non-relational, and big data systems. Cloud-based data storage, processing pipelines, and visualization on Microsoft Azure.</p>
-            <span class="cert-date"><i class="fas fa-calendar"></i> July 2025</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+</main>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Common Questions</span>
-        <h2>FAQ</h2>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item reveal">
-          <div class="faq-question"><span>Are you available for internships or full-time roles?</span><i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><p>Yes! I'm actively looking for both internships and full-time roles, especially in AI/ML engineering, backend development, or DevOps. I'm available from August 2026 onwards.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-question"><span>What kind of roles are you targeting?</span><i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><p>AI/ML Engineering, Backend/Systems Engineering, and DevOps/Platform Engineering. I'm also open to full-stack and blockchain development opportunities.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-question"><span>Are you open to relocation?</span><i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><p>Absolutely. I'm open to relocation anywhere in India or internationally, and comfortable with remote and hybrid arrangements.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-question"><span>What's your preferred tech stack?</span><i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><p>Python for AI/ML, Docker + Kubernetes for DevOps, React.js for web. For blockchain I work primarily with Solidity on EVM-compatible chains.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-question"><span>Can I see your resume?</span><i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><p>Yes! Download it from the button in the nav bar, or <a href="my-resume.pdf" download>click here</a>.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <p class="foot-tick mono">Simulated continuously since you arrived — t=<span data-tick>0</span>. No frameworks. No build step. View source.</p>
+  <table class="titleblock mono" aria-label="Drawing title block">
+    <tr><td>DRAWN BY</td><td>S. PRAVEEN</td></tr>
+    <tr><td>LOCATION</td><td>CHENNAI, IN</td></tr>
+    <tr><td>SHEET</td><td>1 OF 1</td></tr>
+    <tr><td>REV</td><td>2026.07</td></tr>
+  </table>
+  <p class="colophon">Hand-set in HTML, CSS and JavaScript. No frameworks, no build step, no external requests. Composed in Chennai, 2026.</p>
+</footer>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Let's Connect</span>
-        <h2>Get In Touch</h2>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <p class="contact-lead">I'm actively looking for opportunities. Whether it's a role, a project collaboration, or just to talk tech — my inbox is always open.</p>
-          <div class="contact-links">
-            <a href="mailto:phixbugs@gmail.com" class="contact-item">
-              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-              <div><strong>Email</strong><span>phixbugs@gmail.com</span></div>
-            </a>
-            <a href="https://www.linkedin.com/in/soy-praveen/" target="_blank" class="contact-item">
-              <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
-              <div><strong>LinkedIn</strong><span>Let's connect professionally</span></div>
-            </a>
-            <a href="https://github.com/soy-praveen" target="_blank" class="contact-item">
-              <div class="contact-icon"><i class="fab fa-github"></i></div>
-              <div><strong>GitHub</strong><span>Check out my code</span></div>
-            </a>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
+<!-- scroll-as-orbit widget -->
+<button class="orbit-widget" id="orbit-widget" aria-label="Scroll progress — one page is one revolution. Click to return to top." hidden>
+  <span class="orbit-ring" aria-hidden="true"><span class="orbit-dot"></span></span>
+  <span class="orbit-label mono" aria-hidden="true">FIG. 0</span>
+</button>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">End portfolio.<span class="dot"></span></div>
-      <p>Sahukari Praveen · CS @ VIT Chennai</p>
-      <div class="footer-links">
-        <a href="https://github.com/soy-praveen" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/soy-praveen/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:phixbugs@gmail.com"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-  <script>
-    function handleFormSubmit(btn) {
-      btn.innerHTML = 'Sent! <i class="fas fa-check"></i>';
-      btn.style.background = 'var(--green)';
-      setTimeout(() => {
-        btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
-        btn.style.background = '';
-      }, 3000);
-    }
-  </script>
+<script src="page.js" defer></script>
+<script src="sim.js" defer></script>
+<script src="figures.js" defer></script>
 </body>
 </html>
