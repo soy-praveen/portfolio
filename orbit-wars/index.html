@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Orbit Wars — Play Against My Agent</title>
+<title>Orbit Wars - Play Against My Agent</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400..700&display=swap" rel="stylesheet">
@@ -253,7 +253,7 @@
       </button>
       <button class="mode" data-mode="melee">
         <div class="mtitle">Melee</div>
-        <div class="mdesc">A four-house court. You against three agents at once — pick your victims.</div>
+        <div class="mdesc">A four-house court. You against three agents at once - pick your victims.</div>
         <div class="pips"><span class="pip you"></span><span class="vs">1&nbsp;v&nbsp;3</span><span class="pip ink"></span><span class="pip teal"></span><span class="pip slate"></span></div>
       </button>
     </div>
@@ -268,7 +268,7 @@
     </div>
 
     <button class="play" id="playBtn">ENTER THE ARENA</button>
-    <div class="byline">Opponent&nbsp;·&nbsp;<b>ah_mild</b> — my silver-medal agent, real playbook · rank 175/4,729</div>
+    <div class="byline">Opponent&nbsp;·&nbsp;<b>ah_mild</b> - my silver-medal agent, real playbook · rank 175/4,729</div>
   </div>
 </div>
 
@@ -299,7 +299,7 @@
       </div>
     </div>
     <button class="nextbtn" id="nextBtn">NEXT TURN <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></button>
-    <div class="hint" id="hint">Pick a world, set <b>SEND</b>, drag to a target — then <b>NEXT TURN</b> (Space). AUTO runs turns for you.</div>
+    <div class="hint" id="hint">Pick a world, set <b>SEND</b>, drag to a target - then <b>NEXT TURN</b> (Space). AUTO runs turns for you.</div>
   </div>
 </div>
 
@@ -325,7 +325,7 @@
 <script>
 "use strict";
 /* =====================================================================
-   ORBIT WARS — self-contained game.
+   ORBIT WARS - self-contained game.
    Engine is a faithful JS port of engine_ref/orbit_wars.py (validated
    headlessly: no NaN, always terminates, fair symmetric maps). The
    opponent ("my agent") plays the reverse-engineered ah_mild playbook.
@@ -333,7 +333,7 @@
    PLUGGABLE OPPONENT: getMove() below is the single seam. It uses the
    local JS agent today. To play the REAL torch ah_mild, stand up a tiny
    FastAPI service (POST /move {state}->[[fromId,angle,ships]...]) on any
-   free CPU host and set AGENT.endpoint — ah_mild is a planner, it runs
+   free CPU host and set AGENT.endpoint - ah_mild is a planner, it runs
    in milliseconds on CPU, no GPU needed.
    ===================================================================== */
 
@@ -521,7 +521,7 @@ function aiMove(g,player,difficulty,rng=Math.random){
 
 
 /* =====================================================================
-   ah_mild — faithful JS port of the real Kaggle agent (submission 53806286).
+   ah_mild - faithful JS port of the real Kaggle agent (submission 53806286).
    Per-turn pipeline (mirrors pk_ah_mild/main.py run_turn):
      project 18 turns of do-nothing board -> source/target shortlists ->
      safe_drain fleet sizing -> capture floors with ETA-scaled reinforcement
@@ -531,7 +531,7 @@ function aiMove(g,player,difficulty,rng=Math.random){
      {greedy, hold, drop-top-1, drop-top-2, defensive} vs softmax-weighted
      opponent replies (T=15, alpha=0.5, K=6, M=5).
    Scoring here runs the REAL game engine forward instead of the Python
-   tensor flow-projector — same quantity (net ship delta, mine minus
+   tensor flow-projector - same quantity (net ship delta, mine minus
    opponents'), computed exactly.
    ===================================================================== */
 const AH_CFG_2P={H:18,maxSrc:12,maxOff:16,maxDef:7,maxWaves:6,roi:1.2,minLaunch:2,
@@ -799,7 +799,7 @@ function ahMildMove(g,player,useSearch){
   return moves;
 }
 
-// PLUGGABLE SEAM — swap in the real torch ah_mild by pointing at a backend.
+// PLUGGABLE SEAM - swap in the real torch ah_mild by pointing at a backend.
 const AGENT={type:"local",endpoint:null};
 function getMove(g,player){
   // if(AGENT.type==="remote"){ /* await fetch(AGENT.endpoint,{...}) -> moves */ }
@@ -859,7 +859,7 @@ function drawSun(cxw,cyw,t,scale){
   ctx.beginPath();ctx.arc(cx,cy,R*0.3,0,TAU);ctx.stroke();
   ctx.fillStyle=INKC;ctx.beginPath();ctx.arc(cx,cy,2.2,0,TAU);ctx.fill();
   ctx.fillStyle=rgba(MUTEDC,0.85);ctx.font=`500 9px ${getMono()}`;ctx.textAlign="center";
-  ctx.fillText("SUN — HAZARD",cx,cy+R+13);
+  ctx.fillText("SUN - HAZARD",cx,cy+R+13);
 }
 
 function drawArenaFrame(t){
@@ -1093,7 +1093,7 @@ function drawGame(now,t){
   $("stepNum").textContent=g.step;$("progBar").style.width=(100*g.step/EPISODE)+"%";
 }
 
-// queued orders (planned but not yet resolved) — gilded arrows
+// queued orders (planned but not yet resolved) - gilded arrows
 function drawOrders(t){for(const o of orders){const src=g.planets.find(p=>p.id===o.fromId);if(!src)continue;
   const sx=wx2s(src.x),sy=wy2s(src.y),ex=wx2s(o.tx),ey=wy2s(o.ty);
   ctx.strokeStyle=rgba(INKC,0.55);ctx.lineWidth=1.3;ctx.setLineDash([5,5]);ctx.lineDashOffset=-t*14;
@@ -1162,7 +1162,7 @@ function updateScores(){const tot=new Array(g.numPlayers).fill(0);
 function updateHint(){if(!inGame)return;const h=$("hint");const n=selected.size,o=orders.length;
   if(o>0)h.innerHTML=`<span class="sel">${o}</span> order${o>1?"s":""} queued · <b>Next Turn</b> (Space) to resolve · right-click clears`;
   else if(n>0)h.innerHTML=`<span class="sel">${n}</span> world${n>1?"s":""} selected · drag to a target to queue <b>${Math.round(S.pct*100)}%</b>`;
-  else h.innerHTML=`Pick a world, set <b>SEND</b>, drag to a target — then <b>NEXT TURN</b> (Space). AUTO runs turns for you.`;}
+  else h.innerHTML=`Pick a world, set <b>SEND</b>, drag to a target - then <b>NEXT TURN</b> (Space). AUTO runs turns for you.`;}
 
 function toast(msg){const el=$("toast");el.textContent=msg;el.classList.add("show");
   clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove("show"),2200);}
@@ -1174,7 +1174,7 @@ function endGame(){updateScores();
   resEl.classList.remove("win","lose","draw");
   let title,sub;
   if(you&&solo){title="Victory";resEl.classList.add("win");sub="The court is yours. My agent yields the field.";}
-  else if(g.winners&&g.winners.length>1&&you){title="Shared Crown";resEl.classList.add("draw");sub="A dead heat at the top — honours divided.";}
+  else if(g.winners&&g.winners.length>1&&you){title="Shared Crown";resEl.classList.add("draw");sub="A dead heat at the top - honours divided.";}
   else{title="Defeat";resEl.classList.add("lose");sub= g.numPlayers>2?"Outlasted in the melee. The agents divided your worlds.":"ah_mild holds the throne. Try a rematch.";}
   $("verdict").textContent=title;$("verdictSub").textContent=sub;
   const st=$("standings");st.innerHTML="";
@@ -1197,6 +1197,6 @@ buildStars();buildDemo();layout();requestAnimationFrame(frame);
   <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.5A8.5 8.5 0 0 1 9.5 3.6a8.5 8.5 0 1 0 10.9 10.9z"/></svg>
   <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
 </button>
-<a href="../" id="notebookLink">&#8592; S.P. — FIELD NOTEBOOK</a>
+<a href="../" id="notebookLink">&#8592; S.P. - FIELD NOTEBOOK</a>
 </body>
 </html>

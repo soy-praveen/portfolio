@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LAUREL — Resume Intelligence at the Edge · Sahukari Praveen</title>
-<meta name="description" content="Field sheet for EXP-005: LAUREL parses a resume into a structured career report and a curated job shortlist — browser-side document reading, Groq LPU inference behind one Cloudflare Worker, nothing stored.">
+<title>LAUREL - Resume Intelligence at the Edge · Sahukari Praveen</title>
+<meta name="description" content="Field sheet for EXP-005: LAUREL parses a resume into a structured career report and a curated job shortlist - browser-side document reading, Groq LPU inference behind one Cloudflare Worker, nothing stored.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F4EE'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%2316181D' stroke-width='1'/%3E%3Ccircle cx='25' cy='11' r='3.5' fill='%23E0531F'/%3E%3C/svg%3E">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F4EE">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15171C">
@@ -56,7 +56,7 @@
 </button>
 
 <div class="sh-top">
-  <a class="sh-back" href="../">&#8592; S.P. — FIELD NOTEBOOK</a>
+  <a class="sh-back" href="../">&#8592; S.P. - FIELD NOTEBOOK</a>
   <span class="sh-tag">EXP-005 · FIELD SHEET</span>
 </div>
 
@@ -70,7 +70,7 @@
     <div class="stat"><div class="k">RESUMES STORED</div><div class="v">0</div><div class="n">PDF/DOCX read client-side</div></div>
     <div class="stat"><div class="k">DEPLOY UNIT</div><div class="v">1</div><div class="n">Worker serves API + SPA together</div></div>
     <div class="stat"><div class="k">SHORTLIST</div><div class="v">6</div><div class="n">roles, scored with skill gaps</div></div>
-    <div class="stat"><div class="k">RESEARCH RECORD</div><div class="v">94%</div><div class="n">skill extraction — see EXP-005</div></div>
+    <div class="stat"><div class="k">RESEARCH RECORD</div><div class="v">94%</div><div class="n">skill extraction - see EXP-005</div></div>
   </div>
 </section>
 
@@ -84,19 +84,19 @@
       <line x1="200" y1="46" x2="330" y2="46" stroke="var(--hairline)" stroke-width="1.4"/>
       <line x1="640" y1="46" x2="760" y2="46" stroke="var(--hairline)" stroke-width="1.4"/>
       <g><rect x="14" y="16" width="186" height="60" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/>
-        <text x="107" y="36" text-anchor="middle" class="fig-label">BROWSER — REACT 19 SPA</text>
+        <text x="107" y="36" text-anchor="middle" class="fig-label">BROWSER - REACT 19 SPA</text>
         <text x="107" y="50" text-anchor="middle" class="fig-label">PDFJS / MAMMOTH EXTRACT</text>
         <text x="107" y="64" text-anchor="middle" class="fig-label">TEXT ONLY LEAVES</text></g>
       <g><rect x="330" y="16" width="310" height="60" fill="var(--plate)" stroke="var(--accent)" stroke-width="1.4"/>
-        <text x="485" y="36" text-anchor="middle" class="fig-label">CLOUDFLARE WORKER "LAUREL" — HONO</text>
+        <text x="485" y="36" text-anchor="middle" class="fig-label">CLOUDFLARE WORKER "LAUREL" - HONO</text>
         <text x="485" y="50" text-anchor="middle" class="fig-label">/API/PARSE · /API/RECOMMEND · STATIC ASSETS</text>
         <text x="485" y="64" text-anchor="middle" class="fig-label">EVERY MODEL FIELD NORMALIZED + CLAMPED</text></g>
       <g><rect x="760" y="16" width="148" height="60" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/>
         <text x="834" y="40" text-anchor="middle" class="fig-label">GROQ LPU</text>
         <text x="834" y="56" text-anchor="middle" class="fig-label">LLAMA 3.3 70B · JSON</text></g>
-      <text x="14" y="112" class="fig-label">THE WORKER SERVES THE FRONTEND VIA STATIC ASSETS — ONE DEPLOY SHIPS THE ENTIRE SERVICE.</text>
+      <text x="14" y="112" class="fig-label">THE WORKER SERVES THE FRONTEND VIA STATIC ASSETS - ONE DEPLOY SHIPS THE ENTIRE SERVICE.</text>
     </svg>
-    <figcaption class="figcap mono">Fig. A — errors are typed and human-readable: 400 invalid, 422 not-a-resume, 429 rate-limited, 502 upstream.</figcaption>
+    <figcaption class="figcap mono">Fig. A - errors are typed and human-readable: 400 invalid, 422 not-a-resume, 429 rate-limited, 502 upstream.</figcaption>
   </figure>
 </section>
 
@@ -108,7 +108,7 @@
   <div class="plate" style="padding: clamp(1.4rem,3vw,2.2rem); overflow-x:auto;">
     <table class="endpoints">
       <tr><th>METHOD</th><th>PATH</th><th>BODY</th><th>RETURNS</th></tr>
-      <tr><td class="m">GET</td><td>/api/health</td><td>&mdash;</td><td>service status</td></tr>
+      <tr><td class="m">GET</td><td>/api/health</td><td>-</td><td>service status</td></tr>
       <tr><td class="m">POST</td><td>/api/parse</td><td>{ "text": "&lt;resume text&gt;" }</td><td>{ "resume": ParsedResume }</td></tr>
       <tr><td class="m">POST</td><td>/api/recommend</td><td>{ "resume": ParsedResume }</td><td>{ "jobs": [...], "insights": ... }</td></tr>
     </table>
@@ -121,9 +121,9 @@
     <h2 class="sec-title" id="notes-h">Fast because it's private.</h2>
   </header>
   <ul class="plate notes">
-    <li><span class="lead">Documents never upload.</span> PDF and DOCX parsing happens in the browser (pdfjs-dist, mammoth); only extracted text reaches the Worker. Privacy isn't a checkbox — it's the architecture.</li>
+    <li><span class="lead">Documents never upload.</span> PDF and DOCX parsing happens in the browser (pdfjs-dist, mammoth); only extracted text reaches the Worker. Privacy isn't a checkbox - it's the architecture.</li>
     <li><span class="lead">The model is not trusted.</span> Every field of the LLM's JSON output is normalized and clamped server-side before it reaches the client. An honest quality score means the service is allowed to tell you your resume is weak.</li>
-    <li><span class="lead">Two iterations, one project.</span> The research iteration fine-tuned BERT for span extraction — 94% skill-extraction accuracy, +18% recommendation precision over a TF-IDF baseline, 500+ resumes processed end-to-end (the record in EXP-005). LAUREL is the productized rebuild: same problem, engineered for the edge.</li>
+    <li><span class="lead">Two iterations, one project.</span> The research iteration fine-tuned BERT for span extraction - 94% skill-extraction accuracy, +18% recommendation precision over a TF-IDF baseline, 500+ resumes processed end-to-end (the record in EXP-005). LAUREL is the productized rebuild: same problem, engineered for the edge.</li>
   </ul>
 </section>
 
@@ -137,8 +137,8 @@
 </main>
 
 <footer class="foot">
-  <p class="foot-tick mono">Deploys as a single Cloudflare Worker — the same platform this portfolio ships on.</p>
-  <p class="colophon">Hand-set in HTML, CSS and JavaScript — no frameworks, no build step. Typeset in Fraunces and Inter. Composed in Chennai, 2026.</p>
+  <p class="foot-tick mono">Deploys as a single Cloudflare Worker - the same platform this portfolio ships on.</p>
+  <p class="colophon">Hand-set in HTML, CSS and JavaScript - no frameworks, no build step. Typeset in Fraunces and Inter. Composed in Chennai, 2026.</p>
 </footer>
 </body>
 </html>

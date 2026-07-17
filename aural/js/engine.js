@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════
-   AURAL — Audio Engine
+   AURAL - Audio Engine
    Web Audio graph:  source → gain → panner(HRTF) → dry ┐
                                         └→ convolver → wet ┴→ master → analyser → out
    Coordinate space: listener at origin facing -Z, +X right, +Y up.

@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════
-   AURAL — Spatial Audio Atelier
+   AURAL - Spatial Audio Atelier
    Design system · royal, restrained, precise
    ════════════════════════════════════════════════════════════ */
 
@@ -188,7 +188,7 @@ body::before {
 
 /* ════════════════ PAGE TRANSITION VEIL ════════════════
    A single curtain sweeps down to cover the page, then continues
-   down and off-screen — one element, so it can never half-cover. */
+   down and off-screen - one element, so it can never half-cover. */
 .veil { position: fixed; inset: 0; z-index: 100; pointer-events: none; }
 .veil-curtain {
   position: absolute; left: 0; right: 0; top: -2%; bottom: -2%;

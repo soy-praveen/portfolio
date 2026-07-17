@@ -1,5 +1,5 @@
 /* Page choreography. Six moves, one easing, all of it gated:
-   the base document is fully static — motion only runs when the visitor allows it. */
+   the base document is fully static - motion only runs when the visitor allows it. */
 (function () {
   'use strict';
 

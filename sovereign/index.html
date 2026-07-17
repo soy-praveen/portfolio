@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOVEREIGN — Skill-NFT Marketplace · Sahukari Praveen</title>
-<meta name="description" content="Field sheet for EXP-004: SOVEREIGN, a multichain freelance marketplace on Polygon Amoy — soulbound identity, validator-minted skill credentials, milestone escrow, and a skill-weighted DAO.">
+<title>SOVEREIGN - Skill-NFT Marketplace · Sahukari Praveen</title>
+<meta name="description" content="Field sheet for EXP-004: SOVEREIGN, a multichain freelance marketplace on Polygon Amoy - soulbound identity, validator-minted skill credentials, milestone escrow, and a skill-weighted DAO.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F4EE'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%2316181D' stroke-width='1'/%3E%3Ccircle cx='25' cy='11' r='3.5' fill='%23E0531F'/%3E%3C/svg%3E">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F4EE">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15171C">
@@ -55,7 +55,7 @@
 </button>
 
 <div class="sh-top">
-  <a class="sh-back" href="../">&#8592; S.P. — FIELD NOTEBOOK</a>
+  <a class="sh-back" href="../">&#8592; S.P. - FIELD NOTEBOOK</a>
   <span class="sh-tag">EXP-004 · FIELD SHEET</span>
 </div>
 
@@ -63,7 +63,7 @@
 <section class="sec sh-hero">
   <p class="sh-result"><span class="accent-dot" aria-hidden="true"></span>0 FAILED TXNS · 3+ EVM TESTNETS · SUB-3s CONFIRMATION</p>
   <h1>A marketplace where reputation can't be bought, faked, or transferred.</h1>
-  <p class="sub">SOVEREIGN is a full-stack freelance marketplace for Polygon Amoy where identity is a soulbound token, skills are credentials minted only after validator-approved proof of work, budgets sit in milestone escrow that releases the instant work is verified, and a skill-weighted DAO appoints validators and settles disputes. The trust layer isn't a policy document — it's four contracts.</p>
+  <p class="sub">SOVEREIGN is a full-stack freelance marketplace for Polygon Amoy where identity is a soulbound token, skills are credentials minted only after validator-approved proof of work, budgets sit in milestone escrow that releases the instant work is verified, and a skill-weighted DAO appoints validators and settles disputes. The trust layer isn't a policy document - it's four contracts.</p>
 
   <div class="statrow">
     <div class="stat"><div class="k">CONTRACTS</div><div class="v">4</div><div class="n">identity · skills · escrow · DAO</div></div>
@@ -97,7 +97,7 @@
     <div class="contract">
       <h3>SovereignGovernance.sol</h3>
       <p class="role">VOTES WEIGHTED BY PROOF</p>
-      <p>An identity-gated DAO where voting power equals 1 + verified skills (capped at 10). It appoints validators, tunes thresholds, and executes escrow dispute rulings — all on-chain.</p>
+      <p>An identity-gated DAO where voting power equals 1 + verified skills (capped at 10). It appoints validators, tunes thresholds, and executes escrow dispute rulings - all on-chain.</p>
     </div>
   </div>
 </section>
@@ -108,7 +108,7 @@
     <h2 class="sec-title" id="notes-h">The wiring is the product.</h2>
   </header>
   <ul class="plate notes">
-    <li><span class="lead">Roles wired at deploy, not by hand.</span> The deploy script authorizes escrow to write reputation (+10 per milestone, +25 completion bonus, +15 to the client), grants the DAO its governance role over validators, and points dispute settlement at governance — then exports ABIs and addresses straight into the frontend.</li>
+    <li><span class="lead">Roles wired at deploy, not by hand.</span> The deploy script authorizes escrow to write reputation (+10 per milestone, +25 completion bonus, +15 to the client), grants the DAO its governance role over validators, and points dispute settlement at governance - then exports ABIs and addresses straight into the frontend.</li>
     <li><span class="lead">Adversarial testing came first.</span> Duplicate-profile and fake-credential attacks were attempted against the identity and skill contracts before any UI existed; the soulbound design held.</li>
     <li><span class="lead">Pinned OpenZeppelin 5, Solidity 0.8.24, Hardhat.</span> React 19 + TypeScript + ethers v6 on the front; Docker images for the nginx-served dApp and an optional local chain, so the whole stack reproduces with one compose file.</li>
   </ul>
@@ -124,8 +124,8 @@
 </main>
 
 <footer class="foot">
-  <p class="foot-tick mono">Deployed to testnets by design — the contracts are the demonstration.</p>
-  <p class="colophon">Hand-set in HTML, CSS and JavaScript — no frameworks, no build step. Typeset in Fraunces and Inter. Composed in Chennai, 2026.</p>
+  <p class="foot-tick mono">Deployed to testnets by design - the contracts are the demonstration.</p>
+  <p class="colophon">Hand-set in HTML, CSS and JavaScript - no frameworks, no build step. Typeset in Fraunces and Inter. Composed in Chennai, 2026.</p>
 </footer>
 </body>
 </html>

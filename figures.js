@@ -1,5 +1,5 @@
 /* Figures 2–5: a real neural network, two rank fields, an escrow that refuses,
-   and a parser that tags spans. Nothing here is a mock — the net actually runs. */
+   and a parser that tags spans. Nothing here is a mock - the net actually runs. */
 (function () {
   'use strict';
 
@@ -140,7 +140,7 @@
     forward();
   })();
 
-  /* ============================================================ FIG. 4 — rank fields */
+  /* ============================================================ FIG. 4 - rank fields */
   function rankField(fig) {
     var canvas = fig.querySelector('canvas');
     var callout = fig.querySelector('.rank-callout');
@@ -243,7 +243,7 @@
     if (el) rankField(el);
   });
 
-  /* ============================================================ FIG. 4b — the soulbound seal */
+  /* ============================================================ FIG. 4b - the soulbound seal */
   (function sbt() {
     var seal = document.getElementById('sbt-seal');
     if (!seal) return;
@@ -270,7 +270,7 @@
     seal.addEventListener('pointercancel', release);
   })();
 
-  /* ============================================================ FIG. 5 — parser */
+  /* ============================================================ FIG. 5 - parser */
   (function parser() {
     var fig = document.getElementById('parser-fig');
     if (!fig) return;

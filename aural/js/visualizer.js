@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════
-   AURAL — 3D Visualizer
+   AURAL - 3D Visualizer
    A listener bust at the origin, wrapped in a globe of points.
    Points brighten toward the sound source; a golden orb traces
    the motion path and lights the avatar from its direction.
@@ -121,7 +121,7 @@ export class Visualizer {
       g.add(cup, cushion, cap);
     }
 
-    // slim mic boom from the left cup toward the front (-Z) — makes facing readable
+    // slim mic boom from the left cup toward the front (-Z) - makes facing readable
     const micFrom = new THREE.Vector3(-0.9, -0.22, -0.08);
     const micTo = new THREE.Vector3(-0.42, -0.66, -0.6);
     const micDir = micTo.clone().sub(micFrom);

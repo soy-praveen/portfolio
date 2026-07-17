@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATRIUM — Walk Inside a Panorama · Sahukari Praveen</title>
-<meta name="description" content="Field sheet for EXP-003: ATRIUM reconstructs a metric, textured 3D room from a single equirectangular panorama — UniK3D depth on a free Kaggle T4, Three.js first-person walkthrough.">
+<title>ATRIUM - Walk Inside a Panorama · Sahukari Praveen</title>
+<meta name="description" content="Field sheet for EXP-003: ATRIUM reconstructs a metric, textured 3D room from a single equirectangular panorama - UniK3D depth on a free Kaggle T4, Three.js first-person walkthrough.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F4EE'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%2316181D' stroke-width='1'/%3E%3Ccircle cx='25' cy='11' r='3.5' fill='%23E0531F'/%3E%3C/svg%3E">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F4EE">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15171C">
@@ -51,7 +51,7 @@
 </button>
 
 <div class="sh-top">
-  <a class="sh-back" href="../">&#8592; S.P. — FIELD NOTEBOOK</a>
+  <a class="sh-back" href="../">&#8592; S.P. - FIELD NOTEBOOK</a>
   <span class="sh-tag">EXP-003 · FIELD SHEET</span>
 </div>
 
@@ -59,7 +59,7 @@
 <section class="sec sh-hero">
   <p class="sh-result"><span class="accent-dot" aria-hidden="true"></span>91% SEGMENTATION · &minus;23% DEPTH ERROR · UNDER 90s / SCENE</p>
   <h1>One photograph in. A room you can walk through, out.</h1>
-  <p class="sub">ATRIUM takes a single equirectangular (2:1) panorama, reconstructs a metric, textured 3D mesh of the room on a free Kaggle T4 GPU, and opens it as a first-person browser walkthrough — WASD and mouse on desktop, touch on mobile. No point clouds to clean, no photogrammetry rig, no paid compute anywhere in the loop.</p>
+  <p class="sub">ATRIUM takes a single equirectangular (2:1) panorama, reconstructs a metric, textured 3D mesh of the room on a free Kaggle T4 GPU, and opens it as a first-person browser walkthrough - WASD and mouse on desktop, touch on mobile. No point clouds to clean, no photogrammetry rig, no paid compute anywhere in the loop.</p>
 
   <div class="statrow">
     <div class="stat"><div class="k">INPUT</div><div class="v">1</div><div class="n">panorama, nothing else</div></div>
@@ -85,9 +85,9 @@
       <g><rect x="408" y="22" width="152" height="36" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="484" y="38" text-anchor="middle" class="fig-label">KAGGLE T4 KERNEL</text><text x="484" y="50" text-anchor="middle" class="fig-label">UNIK3D VIT-L DEPTH</text></g>
       <g><rect x="638" y="22" width="122" height="36" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.2"/><text x="699" y="44" text-anchor="middle" class="fig-label">ROOM.GLB + META</text></g>
       <g><rect x="838" y="22" width="70" height="36" fill="var(--plate)" stroke="var(--accent)" stroke-width="1.4"/><text x="873" y="38" text-anchor="middle" class="fig-label">WALK</text><text x="873" y="50" text-anchor="middle" class="fig-label">THREE.JS</text></g>
-      <text x="14" y="96" class="fig-label">DEPTH IS PREDICTED ONCE, OVER THE WHOLE EQUIRECT, WITH UNIK3D'S NATIVE SPHERICAL CAMERA — NO CUBE-FACE STITCHING SEAMS.</text>
+      <text x="14" y="96" class="fig-label">DEPTH IS PREDICTED ONCE, OVER THE WHOLE EQUIRECT, WITH UNIK3D'S NATIVE SPHERICAL CAMERA - NO CUBE-FACE STITCHING SEAMS.</text>
     </svg>
-    <figcaption class="figcap mono">Fig. A — upload &rarr; private Kaggle dataset &rarr; script kernel on T4 &rarr; GLB downloaded &rarr; first-person viewer with BVH collision.</figcaption>
+    <figcaption class="figcap mono">Fig. A - upload &rarr; private Kaggle dataset &rarr; script kernel on T4 &rarr; GLB downloaded &rarr; first-person viewer with BVH collision.</figcaption>
   </figure>
 </section>
 
@@ -98,9 +98,9 @@
   </header>
   <ul class="plate notes">
     <li><span class="lead">T4, never P100.</span> Kaggle's preinstalled PyTorch dropped the P100's sm_60 compute capability; the T4 (sm_75) runs the stack as-is. One line of kernel metadata is the difference between a working pipeline and a silent crash.</li>
-    <li><span class="lead">One forward pass, no seams.</span> UniK3D is run with its native Spherical camera over the entire equirectangular image — metric 3D points out, no cube-face stitching artifacts. Installed with <span class="mono">--no-deps</span> so pip can't disturb Kaggle's torch build.</li>
+    <li><span class="lead">One forward pass, no seams.</span> UniK3D is run with its native Spherical camera over the entire equirectangular image - metric 3D points out, no cube-face stitching artifacts. Installed with <span class="mono">--no-deps</span> so pip can't disturb Kaggle's torch build.</li>
     <li><span class="lead">The mesh is the depth map.</span> A vertex grid is lifted straight from predicted depth: the seam column is duplicated for a clean UV wrap, stretch triangles are culled by relative depth ratio, and the nadir is flattened onto the detected floor plane.</li>
-    <li><span class="lead">metallicFactor = 0.</span> glTF defaults metalness to 1.0, which renders pitch black in an unlit viewer. The walkthrough uses unlit textured materials with tone mapping off — the panorama's own light is the lighting.</li>
+    <li><span class="lead">metallicFactor = 0.</span> glTF defaults metalness to 1.0, which renders pitch black in an unlit viewer. The walkthrough uses unlit textured materials with tone mapping off - the panorama's own light is the lighting.</li>
   </ul>
 </section>
 
@@ -115,7 +115,7 @@
 
 <footer class="foot">
   <p class="foot-tick mono">The reconstruction stack runs server-side; this sheet is its record. Ask for a live demo.</p>
-  <p class="colophon">Hand-set in HTML, CSS and JavaScript — no frameworks, no build step. Typeset in Fraunces and Inter. Composed in Chennai, 2026.</p>
+  <p class="colophon">Hand-set in HTML, CSS and JavaScript - no frameworks, no build step. Typeset in Fraunces and Inter. Composed in Chennai, 2026.</p>
 </footer>
 </body>
 </html>

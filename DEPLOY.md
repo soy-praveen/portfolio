@@ -1,6 +1,6 @@
 # Deploying pscope.site
 
-The whole site is static files — this repository is the deployable unit. No
+The whole site is static files - this repository is the deployable unit. No
 build step, no dependencies.
 
 ```
@@ -35,4 +35,4 @@ Cloudflare Pages needs the domain's DNS on Cloudflare:
    (and again for `www.pscope.site` if wanted). DNS records and SSL are
    created automatically.
 
-Nothing else to renew or pay — Pages is free with unlimited static bandwidth.
+Nothing else to renew or pay - Pages is free with unlimited static bandwidth.

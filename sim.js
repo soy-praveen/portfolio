@@ -1,4 +1,4 @@
-/* FIG. 0 — the orbital-intercept planner.
+/* FIG. 0 - the orbital-intercept planner.
    Plan-then-fly: the agent forward-simulates planet motion over an 18-tick
    horizon, solves an intercept, DRAWS the plan first, then flies it.
    The pointer is a gravity perturbation; big enough disturbances force a replan. */
@@ -8,7 +8,7 @@
   var RM = window.matchMedia('(prefers-reduced-motion: reduce)');
   var TICK = 0.35;                    // seconds per tick
   var HORIZON = 18;                   // ticks the agent may look ahead
-  /* colors track the live CSS tokens — the night edition repaints for free
+  /* colors track the live CSS tokens - the night edition repaints for free
      since the sim redraws every frame anyway */
   var INK, MUTED, ACCENT, TEAL, HAIR, PAPER;
   var SIM_REDRAWS = [];
@@ -123,9 +123,9 @@
           if (interactive && !loggedPlan) {
             loggedPlan = true;
             try {
-              console.log('%cFIG. 0 — the agent is planning. Current plan:', 'font-weight:bold');
+              console.log('%cFIG. 0 - the agent is planning. Current plan:', 'font-weight:bold');
               console.table([{ target: 'planet ' + next.target, eta: 't+' + next.T, 'speed (px/s)': Math.round(sol.speed) }]);
-              console.log('Hand-set in HTML, CSS and JavaScript. No frameworks. — S.P.');
+              console.log('Hand-set in HTML, CSS and JavaScript. No frameworks. - S.P.');
             } catch (e) { /* consoles differ; the page must not */ }
           }
           return next;
@@ -312,7 +312,7 @@
         }
       }
 
-      // the current plan — always drawn before the ship moves
+      // the current plan - always drawn before the ship moves
       if (plan) {
         drawPlanPath(plan, tNow, ACCENT, 0.95,
           plan.phase === 'draw' ? plan.progress : 1);
@@ -353,7 +353,7 @@
     }
 
     function drawStatic() {
-      // reduced motion: one solved frame — planets, ship, one complete plan
+      // reduced motion: one solved frame - planets, ship, one complete plan
       simT = 2;
       plan = makePlan(simT);
       if (plan) { plan.phase = 'holdBeat'; plan.progress = 1; }

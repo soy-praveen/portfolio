@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════
-   AURAL — Application
+   AURAL - Application
    Routing, theming, transport, controls, and the render loop.
    ════════════════════════════════════════════════════════════ */
 
@@ -542,7 +542,7 @@ exportBtn.addEventListener("click", async () => {
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 4000);
     exportLabel.textContent = "Exported";
-    toast("Render complete — WAV saved to your downloads.");
+    toast("Render complete - WAV saved to your downloads.");
   } catch (err) {
     console.error(err);
     exportLabel.textContent = "Export failed";
@@ -586,7 +586,7 @@ requestAnimationFrame(frame);
 
 window.addEventListener("resize", () => { heroColorsDirty = true; drawWave(); });
 
-/* initial theme — applied last, after all module state above is initialized */
+/* initial theme - applied last, after all module state above is initialized */
 applyTheme(
   localStorage.getItem("aural-theme") ||
   (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"),

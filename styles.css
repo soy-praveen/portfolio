@@ -1,5 +1,5 @@
 /* ==========================================================================
-   THE ORRERY — a field notebook that simulates
+   THE ORRERY - a field notebook that simulates
    Sahukari Praveen · hand-set, no frameworks, no external requests
    Motion doctrine: the base sheet is static (reduced-motion is the default);
    every animation lives inside @media (prefers-reduced-motion: no-preference).
@@ -13,7 +13,7 @@
   --ink:      #201c14;
   --ink-muted:#5c5546;
   --accent:   #a8853b;
-  --accent-ink: #82661f; /* gold for small text — meets 4.5:1 on paper and plate */
+  --accent-ink: #82661f; /* gold for small text - meets 4.5:1 on paper and plate */
   --accent-bright: #c9a960;
   --accent-soft: rgba(168, 133, 59, 0.12);
   --accent-border: rgba(168, 133, 59, 0.38);
@@ -31,7 +31,7 @@
 }
 
 /* ------------------------------------------------------------------ night edition
-   Not an inversion — the notebook after dark: charcoal paper, bone ink,
+   Not an inversion - the notebook after dark: charcoal paper, bone ink,
    the signal orange warmed a step so it reads at small sizes on the dark ground.
    Default follows the system; an explicit choice sets data-theme and wins. */
 @media (prefers-color-scheme: dark) {
@@ -797,7 +797,7 @@ a { color: inherit; }
 }
 
 /* ==========================================================================
-   MOTION — everything below runs only when the visitor allows it.
+   MOTION - everything below runs only when the visitor allows it.
    One easing, six moves: ENTRANCE, LINE-MASK, COUNT (JS), PLOT, UNDERLINE, LIFT.
    ========================================================================== */
 @media (prefers-reduced-motion: no-preference) {
@@ -818,7 +818,7 @@ a { color: inherit; }
   html.js [data-stagger].in > * { opacity: 1; transform: none; }
   html.js [data-stagger]:not([data-rise]) { opacity: 1; transform: none; }
 
-  /* LINE-MASK — 135% so the taller clip box still hides the line fully */
+  /* LINE-MASK - 135% so the taller clip box still hides the line fully */
   html.js .mask-inner {
     transform: translateY(135%);
     transition: transform 0.62s var(--ease);
@@ -826,7 +826,7 @@ a { color: inherit; }
   }
   html.js .in .mask-inner { transform: none; }
 
-  /* PLOT — dash values are set inline by JS */
+  /* PLOT - dash values are set inline by JS */
   html.js .plot { transition: stroke-dashoffset 0.9s var(--ease) 0.15s; }
 
   /* UNDERLINE */
@@ -899,12 +899,12 @@ a { color: inherit; }
   /* sbt rubber-band snap-back */
   .sbt-seal { transition: transform 0.5s var(--ease); }
 
-  /* orbit widget dot — transform written by JS on scroll */
+  /* orbit widget dot - transform written by JS on scroll */
   .orbit-label { transition: opacity 0.3s var(--ease); }
 }
 
 /* ==========================================================================
-   PRINT — ctrl+P is a deliverable: a clean ink-on-white document.
+   PRINT - ctrl+P is a deliverable: a clean ink-on-white document.
    ========================================================================== */
 @media print {
   :root, :root[data-theme="dark"] {           /* print is always the day edition */
@@ -917,7 +917,7 @@ a { color: inherit; }
   }
   .theme-toggle { display: none !important; }
   body { background: #fff; font-size: 10.5pt; }
-  /* entrances must never hide content on paper — override any pre-reveal state */
+  /* entrances must never hide content on paper - override any pre-reveal state */
   [data-rise], [data-stagger] > *, .mask-inner, .cm-face, .tok {
     opacity: 1 !important;
     transform: translate(var(--fx, 0), var(--fy, 0)) !important;
@@ -949,7 +949,7 @@ a { color: inherit; }
 
 
 /* ==========================================================================
-   LAUREL SKIN — ink & gold. Serif display, soft radii, layered shadows.
+   LAUREL SKIN - ink & gold. Serif display, soft radii, layered shadows.
    Applied over the notebook structure; the instruments underneath are intact.
    ========================================================================== */
 .hero { background-image:
@@ -973,7 +973,7 @@ a { color: inherit; }
 .legend-link { color: var(--accent-ink); }
 .accent-dot { border-radius: var(--radius-pill); }
 
-/* buttons — LAUREL grammar: primary ink pill-ish, CTA gold gradient */
+/* buttons - LAUREL grammar: primary ink pill-ish, CTA gold gradient */
 .hero-jump, .copy-btn, .annex-link, .ng-back, .sh-back {
   border-radius: var(--radius-md); }
 .resume-btn { border-radius: var(--radius-md); border-color: transparent;
