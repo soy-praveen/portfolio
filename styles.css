@@ -7,19 +7,26 @@
 
 :root {
   color-scheme: light;
-  --paper:    #F7F4EE;
-  --plate:    #FFFFFF;
-  --ink:      #16181D;
-  --ink-muted:#4A5160;
-  --accent:   #E0531F;
-  --accent-ink: #B8420F; /* accent for small text — meets 4.5:1 on paper and plate */
-  --data2:    #1F6F6B;
-  --hairline: #D8D2C4;
-  --grid-major: rgba(22, 24, 29, 0.045);
-  --grid-minor: rgba(22, 24, 29, 0.02);
-  --shadow: rgba(22, 24, 29, 0.06);
+  --paper:    #faf8f3;
+  --plate:    #ffffff;
+  --sunken:   #f3efe6;
+  --ink:      #201c14;
+  --ink-muted:#5c5546;
+  --accent:   #a8853b;
+  --accent-ink: #82661f; /* gold for small text — meets 4.5:1 on paper and plate */
+  --accent-bright: #c9a960;
+  --accent-soft: rgba(168, 133, 59, 0.12);
+  --accent-border: rgba(168, 133, 59, 0.38);
+  --data2:    #3e7a4e;
+  --hairline: #e7e1d2;
+  --grid-major: rgba(32, 28, 20, 0.045);
+  --grid-minor: rgba(32, 28, 20, 0.02);
+  --shadow: rgba(32, 28, 20, 0.05);
+  --shadow-md: 0 2px 6px rgba(32, 28, 20, 0.05), 0 14px 34px rgba(32, 28, 20, 0.07);
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 18px; --radius-pill: 999px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
   --mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, Menlo, monospace;
 }
 
@@ -30,32 +37,42 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --paper:    #15171C;
-    --plate:    #1D2027;
-    --ink:      #E9E5DB;
-    --ink-muted:#A2A7B3;
-    --accent:   #F0662F;
-    --accent-ink: #F0662F;
-    --data2:    #47A8A1;
-    --hairline: #2F333C;
-    --grid-major: rgba(233, 229, 219, 0.05);
-    --grid-minor: rgba(233, 229, 219, 0.02);
-    --shadow: rgba(0, 0, 0, 0.45);
+    --paper:    #12100c;
+    --plate:    #1a1712;
+    --sunken:   #0d0b08;
+    --ink:      #ede8dc;
+    --ink-muted:#aaa291;
+    --accent:   #c9a960;
+    --accent-ink: #c9a960;
+    --accent-bright: #e2c884;
+    --accent-soft: rgba(201, 169, 96, 0.12);
+    --accent-border: rgba(201, 169, 96, 0.38);
+    --data2:    #7fbc8f;
+    --hairline: #2b271f;
+    --grid-major: rgba(237, 232, 220, 0.035);
+    --grid-minor: rgba(237, 232, 220, 0.015);
+    --shadow: rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.32), 0 14px 34px rgba(0, 0, 0, 0.36);
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper:    #15171C;
-  --plate:    #1D2027;
-  --ink:      #E9E5DB;
-  --ink-muted:#A2A7B3;
-  --accent:   #F0662F;
-  --accent-ink: #F0662F;
-  --data2:    #47A8A1;
-  --hairline: #2F333C;
-  --grid-major: rgba(233, 229, 219, 0.05);
-  --grid-minor: rgba(233, 229, 219, 0.02);
-  --shadow: rgba(0, 0, 0, 0.45);
+  --paper:    #12100c;
+  --plate:    #1a1712;
+  --sunken:   #0d0b08;
+  --ink:      #ede8dc;
+  --ink-muted:#aaa291;
+  --accent:   #c9a960;
+  --accent-ink: #c9a960;
+  --accent-bright: #e2c884;
+  --accent-soft: rgba(201, 169, 96, 0.12);
+  --accent-border: rgba(201, 169, 96, 0.38);
+  --data2:    #7fbc8f;
+  --hairline: #2b271f;
+  --grid-major: rgba(237, 232, 220, 0.035);
+  --grid-minor: rgba(237, 232, 220, 0.015);
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.32), 0 14px 34px rgba(0, 0, 0, 0.36);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -80,11 +97,12 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: var(--accent); color: var(--paper); }
+::selection { background: var(--accent-soft); color: var(--ink); }
 
 :focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .mono {
@@ -890,10 +908,10 @@ a { color: inherit; }
    ========================================================================== */
 @media print {
   :root, :root[data-theme="dark"] {           /* print is always the day edition */
-    --paper: #fff; --plate: #fff;
-    --ink: #16181D; --ink-muted: #4A5160;
-    --accent: #E0531F; --accent-ink: #B8420F;
-    --data2: #1F6F6B; --hairline: #D8D2C4;
+    --paper: #fff; --plate: #fff; --sunken: #fff;
+    --ink: #201c14; --ink-muted: #5c5546;
+    --accent: #a8853b; --accent-ink: #82661f;
+    --data2: #3e7a4e; --hairline: #e7e1d2;
     --grid-major: transparent; --grid-minor: transparent;
     --shadow: transparent;
   }
@@ -927,4 +945,69 @@ a { color: inherit; }
   .exp-links a::before { content: ""; }
   .foot { break-inside: avoid; }
   a { text-decoration: none; }
+}
+
+
+/* ==========================================================================
+   LAUREL SKIN — ink & gold. Serif display, soft radii, layered shadows.
+   Applied over the notebook structure; the instruments underneath are intact.
+   ========================================================================== */
+.hero { background-image:
+    radial-gradient(52% 44% at 74% 18%, var(--accent-soft), transparent 68%),
+    radial-gradient(38% 36% at 12% 82%, var(--accent-soft), transparent 76%); }
+.hero-name, .sec-title, .ledger-title, .annex-title {
+  font-family: var(--serif); letter-spacing: -0.01em; }
+.hero-name { font-weight: 620; line-height: 1.03; }
+.sec-title { font-weight: 600; line-height: 1.12; }
+.hero-sub, .operator-prose p, .exp-points li, .sec-note { font-weight: 420; }
+
+.plate { border-radius: var(--radius-lg); overflow: hidden; }
+.exp:hover, .rank-plate:hover { box-shadow: var(--shadow-md); }
+.statrow, .contracts, .tinygrid, .stations, .opsgrid { border-radius: var(--radius-lg); overflow: hidden; }
+.mlp-demo, .escrow-fig, .parser-fig, .cubemap, #exp1-canvas, .term, #field
+  { border-radius: var(--radius-md); }
+.margin-note { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+
+.exp-bar { letter-spacing: 0.16em; }
+.exp-links .go { color: var(--accent-ink); }
+.legend-link { color: var(--accent-ink); }
+.accent-dot { border-radius: var(--radius-pill); }
+
+/* buttons — LAUREL grammar: primary ink pill-ish, CTA gold gradient */
+.hero-jump, .copy-btn, .annex-link, .ng-back, .sh-back {
+  border-radius: var(--radius-md); }
+.resume-btn { border-radius: var(--radius-md); border-color: transparent;
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+  box-shadow: 0 1px 2px var(--shadow); }
+.resume-btn .resume-txt { color: #221b0c; }
+.resume-fill { background: var(--ink); }
+.resume-btn:hover .resume-txt, .resume-btn:focus-visible .resume-txt { color: var(--paper); }
+.orbit-ring { border-radius: 50%; }
+.theme-toggle { border-radius: var(--radius-pill); }
+@media (prefers-reduced-motion: no-preference) {
+  .theme-toggle { transition: border-color 0.16s var(--ease), color 0.16s var(--ease), transform 0.16s var(--ease); }
+  .theme-toggle:hover { border-color: var(--accent-border); color: var(--accent); transform: translateY(-1px); }
+}
+
+/* skills as LAUREL chips */
+.skill { border: 1px solid var(--hairline); border-bottom-style: solid;
+  border-radius: var(--radius-pill); padding: 0.3rem 0.85rem;
+  background: var(--sunken); font-size: 0.88rem; }
+.skill:hover, .skill:focus-visible { border-color: var(--accent-border); color: var(--ink); }
+.skill-list { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.skill-list li + li { margin-top: 0; }
+.station-cite a { color: var(--accent-ink); }
+
+.marg-row, .ledger-row, .titleblock td { border-color: var(--hairline); }
+.seal { border-radius: 50%; }
+.hscore, .tip { border-radius: var(--radius-sm); }
+#toast { border-radius: var(--radius-pill); }
+
+/* theme switch: smooth color crossfade, LAUREL-style */
+@media (prefers-reduced-motion: no-preference) {
+  :root.theme-transition, :root.theme-transition *,
+  :root.theme-transition *::before, :root.theme-transition *::after {
+    transition: background-color 320ms ease, border-color 320ms ease,
+      color 320ms ease, fill 320ms ease, stroke 320ms ease, box-shadow 320ms ease !important;
+  }
 }

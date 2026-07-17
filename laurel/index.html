@@ -10,6 +10,9 @@
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15171C">
 <script>document.documentElement.classList.add('js');</script>
 <script src="../theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <style>
   .sh-top { max-width: 1180px; margin: 0 auto; padding: 1.4rem clamp(1.25rem, 4vw, 3rem) 0;
@@ -20,7 +23,7 @@
   .sh-back:hover { color: var(--ink); border-color: var(--ink); }
   .sh-tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--ink-muted); }
   .sh-hero { padding-top: clamp(2.5rem, 6vw, 4.5rem) !important; }
-  .sh-hero h1 { font-size: clamp(2rem, 4.6vw, 3.6rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; max-width: 24ch; }
+  .sh-hero h1 { font-size: clamp(2rem, 4.6vw, 3.6rem); font-family: var(--serif); font-weight: 620; letter-spacing: -0.02em; line-height: 1.05; max-width: 24ch; }
   .sh-hero .sub { max-width: 60ch; color: var(--ink-muted); margin-top: 1.2rem; }
   .sh-result { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono);
     font-size: 0.75rem; letter-spacing: 0.13em; margin-bottom: 1.4rem; }
@@ -135,7 +138,7 @@
 
 <footer class="foot">
   <p class="foot-tick mono">Deploys as a single Cloudflare Worker — the same platform this portfolio ships on.</p>
-  <p class="colophon">Hand-set in HTML, CSS and JavaScript. No frameworks, no build step, no external requests. Composed in Chennai, 2026.</p>
+  <p class="colophon">Hand-set in HTML, CSS and JavaScript — no frameworks, no build step. Typeset in Fraunces and Inter. Composed in Chennai, 2026.</p>
 </footer>
 </body>
 </html>

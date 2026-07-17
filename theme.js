@@ -28,6 +28,10 @@
     effective: effective,
     toggle: function () {
       try { localStorage.setItem(KEY, effective() === 'dark' ? 'light' : 'dark'); } catch (e) {}
+      var root = document.documentElement;
+      root.classList.add('theme-transition');
+      clearTimeout(window.__ttTimer);
+      window.__ttTimer = setTimeout(function () { root.classList.remove('theme-transition'); }, 360);
       apply();
     }
   };
